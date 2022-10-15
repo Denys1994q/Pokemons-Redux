@@ -1,0 +1,65 @@
+.opened-sort
+    background: #464646
+    margin-top: -3rem
+    margin-bottom: 2rem
+    color: white
+    display: inline-block
+    padding: .5rem 1rem
+    span
+        background: #fff
+        color: black
+        padding: .1rem
+        margin-left: 1rem
+        padding-left: .4rem
+        cursor: pointer
+.sorted
+    display: flex
+    justify-content: start
+    align-items: center
+    gap: 3rem
+    font-size: 1.2rem
+    &-wrapper
+        background: #464646
+        margin-bottom: 2rem
+        padding: 1rem 1rem
+        animation: opacityAnim .5s ease-in-out
+    li
+        border-radius: 3px
+        width: 15rem
+        height: 3.7rem
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        background: #ADDDD0
+        cursor: pointer
+        padding: .5rem
+        text-transform: uppercase
+        &:hover
+            background: orange
+    .sorted-types
+        background: none
+        border: none
+        text-align: start
+        width: 18rem
+        &:hover
+            background: none
+            color: black
+        &-type
+            width: 30rem
+.custom-select
+    &__control
+        background-color: #ADDDD0 !important
+        &:hover
+            background-color: orange !important
+    &__placeholder
+        color: black !important
+    &__indicator
+        color: black !important
+    &__menu-list::-webkit-scrollbar
+        width: 8px
+        height: 0px
+    &__menu-list::-webkit-scrollbar-track
+        background: #464646
+    &__menu-list::-webkit-scrollbar-thumb
+        background: #888

@@ -1,0 +1,82 @@
+.compare
+    width: 100%
+    z-index: 1
+    height: 100%
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background: #646363
+    opacity: .9
+    border: 1px solid red
+    // animation: scaleAnim 2s ease-in-out
+    &__choose
+        background: red
+        color: white
+        position: absolute
+        top: 6.5rem
+        right: -9.3rem
+        padding: .5rem 1rem
+        font-size: 1.4rem
+        animation: opacityAnim .5s ease-in-out
+    &__close
+        background: red
+        width: 3rem
+        height: 3rem
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        padding: .2rem
+        rop: 0
+        right: 1rem
+        position: absolute
+        cursor: pointer
+        animation: opacityAnim .5s ease-in-out
+    &__vs
+        width: 20rem
+        height: 20rem
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    &__text
+        background-image: url(../../../imgs/arena.jpg)
+        background-size: contain
+        opacity: 0
+        border: 2px solid white
+        opacity: 1
+        padding: 1rem
+        position: fixed
+        top: 50%
+        left: 50%
+        width: 90rem
+        height: 50rem
+        transform: translate(-50%, -50%)
+        color: white
+        z-index: 2
+        display: flex
+        animation: opacityAnim .7s ease-in-out
+        font-size: 1.6rem
+        &__left, &__right, &__center
+            text-align: center
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-direction: column
+            img
+                width: 18rem
+                height: 18rem
+                margin-bottom: 4rem
+            p
+                width: 30rem
+                span
+                    background: #e79332
+                    text-transform: uppercase
+                    font-weight: 700
+        &__left
+            width: 33%
+        &__center
+            width: 33%
+        &__right
+            width: 33%

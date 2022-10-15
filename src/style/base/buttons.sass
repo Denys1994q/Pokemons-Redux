@@ -1,0 +1,60 @@
+.btn
+    display: inline-block
+    height: 5rem
+    background: #f78b3f
+    color: white
+    margin-right: 1rem
+.btn-background-slide
+    display: inline-block
+    width: 170px
+    font-size: 1.4rem
+    position: relative
+    background-color: #F2F2F2
+    text-transform: uppercase
+    color: black
+    padding: 1rem
+    cursor: pointer
+    margin-right: 1rem
+    transition: ease-out .3s
+    // box-shadow: inset 0 0 0 0 #FFC090
+    box-shadow: inset 0 0 0 0 #078686
+    border: 1px solid white
+    border-radius: 4px
+    outline: none
+    &:hover
+        // box-shadow: inset 170px 0 0 0 #FA9494
+        box-shadow: inset 170px 0 0 0 #1a5b66
+        color: white
+    &:disabled
+        opacity: .2
+.btn-search
+    width: 5rem
+    height: 5rem
+    background: #f78b3f
+    border: none
+    i
+        color: white
+.btn-center
+    margin-top: 2rem
+    margin-left: 45rem
+.compareBtn
+    position: absolute
+    top: 0
+    right: -47rem
+    text-transform: uppercase
+    background: red
+    overflow: hidden
+    &:before
+        content: ''
+        width: 2em
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        background-color: rgba(#fff, 0.6)
+        transform: translateX(-4em) skewX(-45deg)
+    &:hover
+        color: white
+        &:before
+            animation: move-light .4s
+            

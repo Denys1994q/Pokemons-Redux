@@ -1,0 +1,68 @@
+@keyframes leftToRight
+    0%
+        opacity: 0
+        transform: translateX(-10rem)
+    80%
+        transform: translateX(2rem)
+    100%
+        opacity: 1
+        transform: translateX(0rem)
+
+@keyframes rightToLeft
+    0%
+        opacity: 0
+        transform: translateX(10rem)
+    80%
+        transform: translateX(-2rem)
+    100%
+        opacity: 1
+        transform: translateX(0rem)
+@keyframes opacityAnim
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+@keyframes scaleAnim
+    0%
+        scale(0.2)
+    100%
+        scale(1.2)
+@keyframes topToBottom
+    0%
+        opacity: 0
+        transform: translateY(20rem)
+    80%
+        transform: translateY(-2rem)
+    100%
+        opacity: 1
+        transform: translateY(0rem)
+@keyframes smoke
+    100%
+        opacity: 0
+        filter: blur(5px)
+        transform: rotate(90deg) translateY(-200px)
+@keyframes top
+    0%
+        transform: translateY(-.5rem)
+    100%
+        transform: translateY(0rem)
+@keyframes move-light
+    from
+        transform: translateX(-4em) skewX(-45deg)
+    to
+        transform: translateX(14em) skewX(-45deg)
+
+.scale-anim-enter
+    // opacity: 0
+    transform: scale(0.2)
+.scale-anim-enter-active
+    // opacity: 1
+    transform: scale(1)
+    transition: all 500ms ease-in-out
+.scale-anim-exit
+    transform: scale(1)
+    // opacity: 1
+.scale-anim-exit-active
+    transform: scale(0.2)
+    // opacity: 0
+    transition: all 500ms ease-in-out
