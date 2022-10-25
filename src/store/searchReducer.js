@@ -1,15 +1,5 @@
-
-// import pokeball from "../imgs/pokeball.png";
-// let arrPokeballs = [];
-// for (let i = 0; i < 60; i++) {
-//     arrPokeballs.push({ img: pokeball });
-// }
-
+// друга версія 
 // const defaultState = {
-//     pokemons: arrPokeballs,
-//     activePokemonTimer: null,
-//     showModal: false,
-//     closeFirstBtn: false,
 //     pokemonsOrdered: [],
 //     pokemonsAfterFilter: [],
 //     abilities: {},
@@ -21,11 +11,6 @@
 //     addComparisonMark: false,
 //     pokemonsToCompare: [],
 // };
-
-// const GET_POKEMONS = "GET_POKEMONS";
-// const SET_ACTIVE_POKEMON_TIMER = "SET_ACTIVE_POKEMON_TIMER";
-// const OPEN_MODAL = "OPEN_MODAL";
-// const CLOSE_FIRST_BTN = "CLOSE_FIRST_BTN";
 
 // const GET_ORDERED_POKEMONS = "GET_ORDERED_POKEMONS";
 // const GET_ABILITY_DESC = "GET_ABILITY_DESC";
@@ -40,49 +25,28 @@
 // const ADD_POKEMONS_COMPARE = "ADD_POKEMONS_COMPARE";
 // const DELETE_POKEMONS_COMPARE = "DELETE_POKEMONS_COMPARE";
 
-// let arr = [];
-// let orderedArr = [];
-// let arrPokemonsToCompare = [];
+// // let orderedArr = [];
 
-// export const reducer = (state = defaultState, action) => {
+// const searchReducer = (state = defaultState, action) => {
 //     switch (action.type) {
-//         case GET_POKEMONS:
-//             arr.push({ ...action.payload });
-//             return { ...state, pokemons: [...arr] };
-//         case SET_ACTIVE_POKEMON_TIMER:
-//             return { ...state, activePokemonTimer: action.payload };
-//         case OPEN_MODAL:
-//             return { ...state, showModal: action.payload };
-//         case CLOSE_FIRST_BTN:
-//             return { ...state, closeFirstBtn: action.payload };
 //         case OPEN_SORTED_BLOCK:
 //             return { ...state, openSortedBlock: !state.openSortedBlock };
 //         case ADD_COMPARISON_MARK:
 //             return { ...state, addComparisonMark: !state.addComparisonMark };
 //         case ADD_POKEMONS_COMPARE:
-//             arrPokemonsToCompare.push(action.payload);
-//             return { ...state, pokemonsToCompare: [...arrPokemonsToCompare] };
+//             return { ...state, pokemonsToCompare: [...state.pokemonsToCompare, action.payload] };
 //         case DELETE_POKEMONS_COMPARE:
 //             if (action.payload === "deleteAll") {
-//                 arrPokemonsToCompare = [];
-//                 return {
-//                     ...state,
-//                     pokemonsToCompare: arrPokemonsToCompare,
-//                 };
+//                 return { ...state, pokemonsToCompare: [] };
 //             } else {
-//                 for (let i = 0; i < arrPokemonsToCompare.length; i++) {
-//                     if (arrPokemonsToCompare[i] === action.payload) {
-//                         arrPokemonsToCompare.splice(i, 1);
-//                     }
-//                 }
 //                 return {
 //                     ...state,
-//                     pokemonsToCompare: arrPokemonsToCompare,
+//                     pokemonsToCompare: state.pokemonsToCompare.filter(item => item !== action.payload),
 //                 };
 //             }
 //         case GET_ORDERED_POKEMONS:
-//             orderedArr.push({ ...action.payload });
-//             return { ...state, pokemonsOrdered: [...orderedArr] };
+//             // orderedArr.push({ ...action.payload });
+//             return { ...state, pokemonsOrdered: [...state.pokemonsOrdered, action.payload] };
 //         case FILTER_POKEMONS:
 //             let chosenPokemons = [];
 //             if (action.payload === "") {
@@ -129,49 +93,42 @@
 //     }
 // };
 
-// export const addPokemonsFromAPI = (payload) => ({
-//     type: GET_POKEMONS,
-//     payload,
-// });
-// export const setActivePokemonTimer = (payload) => ({
-//     type: SET_ACTIVE_POKEMON_TIMER,
-//     payload,
-// });
-// export const openModal = (payload) => ({
-//     type: OPEN_MODAL,
-//     payload,
-// });
-// export const closeFirstBtn = (payload) => ({
-//     type: CLOSE_FIRST_BTN,
-//     payload,
-// });
-// export const addOrderedPokemonsFromAPI = (payload) => ({
-//     type: GET_ORDERED_POKEMONS,
-//     payload,
-// });
-// export const addAbilityDescFromAPI = (payload) => ({
-//     type: GET_ABILITY_DESC,
-//     payload,
-// });
-// export const addPokemonFromAPI = (payload) => ({ type: GET_POKEMON, payload });
-// export const showLoading = (payload) => ({ type: SHOW_LOADING, payload });
-// export const getTypes = (payload) => ({ type: GET_TYPES, payload });
-// export const setActivePokemon = (payload) => ({
-//     type: SET_ACTIVE_POKEMON,
-//     payload,
-// });
-// export const filterPokemons = (payload) => ({ type: FILTER_POKEMONS, payload });
-// export const sortPokemons = (payload) => ({ type: SORT_POKEMONS, payload });
-// export const showOpenSortedBlock = (payload) => ({
-//     type: OPEN_SORTED_BLOCK,
-//     payload,
-// });
-// export const openComparisonMarks = (payload) => ({ type: ADD_COMPARISON_MARK, payload });
-// export const comparePokemons = (payload) => ({
-//     type: ADD_POKEMONS_COMPARE,
-//     payload,
-// });
-// export const deleteComparePokemons = (payload) => ({
-//     type: DELETE_POKEMONS_COMPARE,
-//     payload,
-// });
+// export const addOrderedPokemonsFromAPI = payload => ({ type: GET_ORDERED_POKEMONS, payload });
+// export const addAbilityDescFromAPI = payload => ({ type: GET_ABILITY_DESC, payload });
+// export const addPokemonFromAPI = payload => ({ type: GET_POKEMON, payload });
+// export const showLoading = payload => ({ type: SHOW_LOADING, payload });
+// export const getTypes = payload => ({ type: GET_TYPES, payload });
+// export const setActivePokemon = payload => ({ type: SET_ACTIVE_POKEMON, payload });
+// export const filterPokemons = payload => ({ type: FILTER_POKEMONS, payload });
+// export const sortPokemons = payload => ({ type: SORT_POKEMONS, payload });
+// export const showOpenSortedBlock = payload => ({ type: OPEN_SORTED_BLOCK, payload });
+// export const openComparisonMarks = payload => ({ type: ADD_COMPARISON_MARK, payload });
+// export const comparePokemons = payload => ({ type: ADD_POKEMONS_COMPARE, payload });
+// export const deleteComparePokemons = payload => ({ type: DELETE_POKEMONS_COMPARE, payload });
+
+// export default searchReducer;
+
+
+// сама перша версія 
+// let arrPokemonsToCompare = [];
+
+// arrPokemonsToCompare.push(action.payload);
+// return { ...state, pokemonsToCompare: [...arrPokemonsToCompare] };
+
+// if (action.payload === "deleteAll") {
+//     arrPokemonsToCompare = [];
+//     return {
+//         ...state,
+//         pokemonsToCompare: arrPokemonsToCompare,
+//     };
+// } else {
+//     for (let i = 0; i < arrPokemonsToCompare.length; i++) {
+//         if (arrPokemonsToCompare[i] === action.payload) {
+//             arrPokemonsToCompare.splice(i, 1);
+//         }
+//     }
+//     return {
+//         ...state,
+//         pokemonsToCompare: arrPokemonsToCompare,
+//     };
+// }

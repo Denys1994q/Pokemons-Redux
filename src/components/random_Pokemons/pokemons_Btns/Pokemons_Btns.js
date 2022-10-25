@@ -1,15 +1,17 @@
 import { fetchPokemons } from "../../../asyncActions/pokemons";
-import { setActivePokemonTimer } from "../../../store/reducer";
-import { closeFirstBtn } from "../../../store/reducer";
-import { openModal } from "../../../store/reducer";
+import {
+    randomPokemons_setActivePokemonTimer,
+    randomPokemons_openModal,
+    randomPokemons_closeFirstBtn,
+} from "../randomPokemonsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Modal from '../../common/modal/Modal'
+import Modal from "../../common/modal/Modal";
 
 const Pokemons_Btns = () => {
     const dispatch = useDispatch();
 
-    const closedFirstBtn = useSelector((state) => state.closeFirstBtn);
+    const closedFirstBtn = useSelector((state) => state.randomPokemonsSlice.closeFirstBtn);
 
     const [closeSecondBtn, setCloseSecondBtn] = useState(true);
     const [closeThirdBtn, setCloseThirdBtn] = useState(true);
@@ -28,7 +30,7 @@ const Pokemons_Btns = () => {
     };
 
     const getEmptyPokeballs = () => {
-        dispatch(closeFirstBtn(true));
+        dispatch(randomPokemons_closeFirstBtn(true));
         setCloseSecondBtn(false);
     };
 
@@ -41,10 +43,10 @@ const Pokemons_Btns = () => {
             if (runTimer) {
                 i++;
                 const random = Math.floor(Math.random() * (60 - 0) + 0);
-                dispatch(setActivePokemonTimer(random));
+                dispatch(randomPokemons_setActivePokemonTimer(random));
             }
             if (i === 25) {
-                dispatch(openModal(true));
+                dispatch(randomPokemons_openModal(true));
 
                 clearInterval(timer);
             }

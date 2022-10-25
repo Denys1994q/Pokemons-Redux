@@ -1,24 +1,28 @@
 import "../search_Panel/search_Panel.sass";
 import failure from "../../../imgs/sad.jpg";
 //
+import { useHttp } from "../../../hooks/http.hook";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPokemon } from "../../../asyncActions/pokemons";
-import { setActivePokemon, openComparisonMarks } from "../../../store/reducer";
+// import { fetchPokemon } from "../../../asyncActions/pokemons";
+import { searchPokemons_setActivePokemon, searchPokemons_addComparisonMark, fetchPokemon } from "../searchPokemonsSlice";
 
 const SearchPanel = () => {
     const dispatch = useDispatch();
 
-    const showMarks = useSelector((state) => state.addComparisonMark);
+    const { request } = useHttp();
+
+    const showMarks = useSelector(state => state.searchPokemonsSlice.addComparisonMark);
 
     const [searchTextFromInput, setSearchTextFromInput] = useState("");
     const [showError, setShowError] = useState(false);
 
-    const loading = useSelector((state) => state.loading);
-    const searchedPokemon = useSelector((state) => state.searchedPokemon);
+    const loading = useSelector(state => state.searchPokemonsSlice.loading);
+    const pokemonLoadingError = useSelector(state => state.searchPokemonsSlice.fetchPokemonError);
+    // const searchedPokemon = useSelector(state => state.searchPokemonsSlice.searchedPokemon);
 
-    const searchPokemon = (e) => {
+    const searchPokemon = e => {
         setSearchTextFromInput(e.target.value);
         if (e.target.value.length > 0) {
             setShowError(false);
@@ -28,7 +32,7 @@ const SearchPanel = () => {
     const findPokemon = () => {
         if (searchTextFromInput.length > 0) {
             dispatch(fetchPokemon(searchTextFromInput));
-            dispatch(setActivePokemon(null));
+            dispatch(searchPokemons_setActivePokemon(null));
             setShowError(false);
         } else {
             setShowError(true);
@@ -37,7 +41,7 @@ const SearchPanel = () => {
     };
 
     const comparePokemons = () => {
-        dispatch(openComparisonMarks(true));
+        dispatch(searchPokemons_addComparisonMark(true));
     };
 
     return (
@@ -45,7 +49,7 @@ const SearchPanel = () => {
             <div className='main-search-input-wrapper'>
                 <input
                     value={searchTextFromInput}
-                    onChange={(e) => searchPokemon(e)}
+                    onChange={e => searchPokemon(e)}
                     type='text'
                     placeholder='pokemon name or id'
                 />
@@ -64,17 +68,11 @@ const SearchPanel = () => {
                     <i className='fa fa-search'></i>
                 </button>
             )}
-            <div
-                className='search-status'
-                style={{
-                    display:
-                        searchedPokemon && searchedPokemon.status === "not found" && !loading
-                            ? "block"
-                            : "none",
-                }}
-            >
-                <img src={failure} alt='pokemon not found' />
-            </div>
+            {pokemonLoadingError ? (
+                <div className='search-status'>
+                    <img src={failure} alt='pokemon not found' />
+                </div>
+            ) : null}
         </div>
     );
 };

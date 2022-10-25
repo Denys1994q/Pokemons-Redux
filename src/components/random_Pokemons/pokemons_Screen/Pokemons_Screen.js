@@ -3,8 +3,8 @@ import whoPokemon from "../../../imgs/who_pokemon.png";
 import { useSelector } from "react-redux";
 
 const PokemonsScreen = () => {
-    const pokemons = useSelector((state) => state.pokemons);
-    const activePokemon = useSelector((state) => state.activePokemonTimer);
+    const pokemons = useSelector((state) => state.randomPokemonsSlice.pokemons);
+    const activePokemon = useSelector((state) => state.randomPokemonsSlice.activePokemonTimer);
 
     return (
         <div className='main-wrapper-left-img-screen'>

@@ -1,19 +1,18 @@
 import "../search_Compare/search_compare.sass";
 
 import { useSelector, useDispatch } from "react-redux";
-import { openComparisonMarks } from "../../../store/reducer";
-import { deleteComparePokemons } from "../../../store/reducer";
+import { searchPokemons_addComparisonMark, searchPokemons_deletePokemonsCompare } from "../searchPokemonsSlice";
 import vs from "../../../imgs/vs.webp";
 
 const ComparePokemons = () => {
     const dispatch = useDispatch();
 
-    const pokemonsAfterFilter = useSelector((state) => state.pokemonsAfterFilter);
-    const pokemonsToCompareArr = useSelector((state) => state.pokemonsToCompare);
+    const pokemonsAfterFilter = useSelector((state) => state.searchPokemonsSlice.pokemonsAfterFilter);
+    const pokemonsToCompareArr = useSelector((state) => state.searchPokemonsSlice.pokemonsToCompare);
 
     const closeAndCleanArr = () => {
-        dispatch(openComparisonMarks(false));
-        dispatch(deleteComparePokemons("deleteAll"));
+        dispatch(searchPokemons_addComparisonMark(false));
+        dispatch(searchPokemons_deletePokemonsCompare("deleteAll"));
     };
 
     return (

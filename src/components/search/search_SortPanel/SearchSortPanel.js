@@ -1,18 +1,16 @@
 import "../search_SortPanel/search_Sort_Panel.sass";
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterPokemons, sortPokemons } from "../../../store/reducer";
-import { showOpenSortedBlock } from "../../../store/reducer";
-import SearchSelect from "./selects/SearchSelect";
-
+import { searchPokemons_filterPokemons, searchPokemons_sortPokemons, searchPokemons_openSortedBlock } from "../searchPokemonsSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripLines } from "@fortawesome/free-solid-svg-icons";
+
+import SearchSelect from "./selects/SearchSelect";
 
 const SearchSortPanel = () => {
     // класна анімація на покеболи і на кнопку https://fontawesome.com/docs/web/use-with/react/style#size
 
-    const openSortedBlock = useSelector((state) => state.openSortedBlock);
+    const openSortedBlock = useSelector(state => state.searchPokemonsSlice.openSortedBlock);
 
     const dispatch = useDispatch();
 
@@ -26,8 +24,7 @@ const SearchSortPanel = () => {
             <li
                 key={i}
                 style={{ background: i === activeType ? "#FA7070" : null }}
-                onClick={() => sort(item, i)}
-            >
+                onClick={() => sort(item, i)}>
                 {item}
             </li>
         );
@@ -36,10 +33,10 @@ const SearchSortPanel = () => {
     const sort = (type, i) => {
         if (i !== activeType) {
             setActiveType(i);
-            dispatch(sortPokemons(type));
+            dispatch(searchPokemons_sortPokemons(type));
         } else {
             setActiveType(null);
-            selectedType ? dispatch(filterPokemons(selectedType)) : dispatch(filterPokemons(""));
+            selectedType ? dispatch(searchPokemons_filterPokemons(selectedType)) : dispatch(searchPokemons_filterPokemons(""));
         }
     };
 
@@ -47,7 +44,7 @@ const SearchSortPanel = () => {
         <>
             <div className='opened-sort'>
                 Sort & Filter
-                <span onClick={() => dispatch(showOpenSortedBlock())}>
+                <span onClick={() => dispatch(searchPokemons_openSortedBlock())}>
                     {openSortedBlock ? (
                         <i className='fa fa-caret-up'></i>
                     ) : (

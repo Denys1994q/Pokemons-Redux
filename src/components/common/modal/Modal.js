@@ -1,15 +1,15 @@
 import "../modal/modal.sass";
 
-import { openModal } from "../../../store/reducer";
+import { randomPokemons_openModal } from "../../random_Pokemons/randomPokemonsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 const Modal = () => {
     const dispatch = useDispatch();
 
-    const showModal = useSelector((state) => state.showModal);
-    const pokemons = useSelector((state) => state.pokemons);
-    const activePokemon = useSelector((state) => state.activePokemonTimer);
+    const showModal = useSelector((state) => state.randomPokemonsSlice.showModal);
+    const pokemons = useSelector((state) => state.randomPokemonsSlice.pokemons);
+    const activePokemon = useSelector((state) => state.randomPokemonsSlice.activePokemonTimer);
 
     const abilities = activePokemon
         ? pokemons[activePokemon].abilities.map((item, i) => {
@@ -21,7 +21,7 @@ const Modal = () => {
         <>
             {showModal ? (
                 <CSSTransition in={showModal} timeout={4000} classNames='my-modal'>
-                    <div onClick={() => dispatch(openModal(false))} className='modal-wrapper'>
+                    <div onClick={() => dispatch(randomPokemons_openModal(false))} className='modal-wrapper'>
                         <div className='modall'>
                             <p>Pokemon of a day</p>
                             <p className='modall-title'>
@@ -44,7 +44,7 @@ const Modal = () => {
                                 {activePokemon ? pokemons[activePokemon].base_experience : null}
                             </ul>
                         </div>
-                        <div onClick={() => dispatch(openModal(false))} className='overlay'></div>
+                        <div onClick={() => dispatch(randomPokemons_openModal(false))} className='overlay'></div>
                     </div>
                 </CSSTransition>
             ) : null}
