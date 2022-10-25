@@ -8,28 +8,35 @@ const initialState = {
     pokemonsToCompare: [],
     pokemonsOrdered: [],
     pokemonsAfterFilter: [],
-    abilities: {},
+
+    pokemonAbilities: {},
+    pokemonAbilitiesLoading: false,
+    pokemonAbilitiesError: false,
+
     searchedPokemon: null,
-    loading: false,
-    fetchPokemonError: false,
-    types: null,
+    searchedPokemonLoading: false,
+    searchedPokemonError: false,
+
+    pokemonTypes: [],
+    pokemonTypesLoading: null,
+    pokemonTypesError: null,
+
     activePokemon: null,
 };
-
-// export const fetchPokemon = (request, name) => {
-//     return function (dispatch) {
-//         dispatch(searchPokemons_showLoading(true));
-
-//         request(`https://pokeapi.co/api/v2/pokemon/${name}`)
-//             .then(data => dispatch(searchPokemons_getPokemon({ data, status: "ok" })))
-//             .catch(data => dispatch(searchPokemons_pokemonFetchingError(true))) // 404, якщо не знайдено покемона
-//             .finally(() => dispatch(searchPokemons_showLoading(false)));
-//     };
-// };
 
 export const fetchPokemon = createAsyncThunk("searchPokemons/fetchPokemon", name => {
     const { request } = useHttp();
     return request(`https://pokeapi.co/api/v2/pokemon/${name}`);
+});
+
+export const fetchPokemonAbilities = createAsyncThunk("searchPokemons/fetchPokemonAbilities", name => {
+    const { request } = useHttp();
+    return request(`https://pokeapi.co/api/v2/ability/${name}`);
+});
+
+export const fetchPokemonTypes = createAsyncThunk("searchPokemons/fetchPokemonTypes", () => {
+    const { request } = useHttp();
+    return request("https://pokeapi.co/api/v2/type/");
 });
 
 const searchPokemonsSlice = createSlice({
@@ -73,10 +80,6 @@ const searchPokemonsSlice = createSlice({
                 state.pokemonsAfterFilter = chosenPokemons;
             }
         },
-        // типи покемонів
-        searchPokemons_getTypes: (state, action) => {
-            state.types = action.payload;
-        },
         // сортування покемонів
         searchPokemons_sortPokemons: (state, action) => {
             let ar = [...state.pokemonsAfterFilter];
@@ -95,43 +98,55 @@ const searchPokemonsSlice = createSlice({
             }
             state.pokemonsAfterFilter = ar;
         },
-        // навички покемона
-        searchPokemons_getAbilityDesc: (state, action) => {
-            state.abilities = action.payload;
-        },
-        // пошук покемона
-        // searchPokemons_getPokemon: (state, action) => {
-        //     state.searchedPokemon = action.payload;
-        //     state.fetchPokemonError = false;
-        // },
-        // searchPokemons_showLoading: state => {
-        //     state.loading = true;
-        // },
-        // searchPokemons_pokemonFetchingError: state => {
-        //     state.fetchPokemonError = true;
-        //     state.loading = false;
-        // },
         // активний покемон
         searchPokemons_setActivePokemon: (state, action) => {
             state.activePokemon = action.payload;
         },
     },
     extraReducers: builder => {
-        builder
+        builder // пошук покемона по інпуту
             .addCase(fetchPokemon.pending, state => {
-                state.loading = true;
-                state.fetchPokemonError = false;
+                state.searchedPokemonLoading = true;
+                state.searchedPokemonError = false;
             })
             .addCase(fetchPokemon.fulfilled, (state, action) => {
                 state.searchedPokemon = action.payload;
-                state.loading = false;
-                state.fetchPokemonError = false;
+                state.searchedPokemonLoading = false;
+                state.searchedPokemonError = false;
             })
             .addCase(fetchPokemon.rejected, state => {
-                state.fetchPokemonError = true;
-                state.loading = false;
+                state.searchedPokemonError = true;
+                state.searchedPokemonLoading = false;
+            });
+        builder // абілітіс покемона 
+            .addCase(fetchPokemonAbilities.pending, state => {
+                state.pokemonAbilitiesLoading = true;
+                state.pokemonAbilitiesError = false;
             })
-            .addDefaultCase(() => { }) 
+            .addCase(fetchPokemonAbilities.fulfilled, (state, action) => {
+                state.pokemonAbilities = action.payload;
+                state.pokemonAbilitiesLoading = false;
+                state.pokemonAbilitiesError = false;
+            })
+            .addCase(fetchPokemonAbilities.rejected, state => {
+                state.pokemonAbilitiesError = true;
+                state.pokemonAbilitiesLoading = false;
+            });
+        builder // типи покемонів 
+            .addCase(fetchPokemonTypes.pending, state => {
+                state.pokemonTypesLoading = true;
+                state.pokemonTypesError = false;
+            })
+            .addCase(fetchPokemonTypes.fulfilled, (state, action) => {
+                state.pokemonTypes = action.payload;
+                state.pokemonTypesLoading = false;
+                state.pokemonTypesError = false;
+            })
+            .addCase(fetchPokemonTypes.rejected, state => {
+                state.pokemonTypesError = true;
+                state.pokemonTypesLoading = false;
+            })
+            .addDefaultCase(() => {});
     },
 });
 
@@ -147,10 +162,5 @@ export const {
     searchPokemons_getOrderedPokemons,
     searchPokemons_filterPokemons,
     searchPokemons_sortPokemons,
-    searchPokemons_getAbilityDesc,
-    // searchPokemons_getPokemon,
-    // searchPokemons_showLoading,
-    // searchPokemons_pokemonFetchingError,
-    searchPokemons_getTypes,
     searchPokemons_setActivePokemon,
 } = actions;

@@ -1,9 +1,5 @@
 import { randomPokemons_getPokemons } from "../components/random_Pokemons/randomPokemonsSlice";
-import {
-    searchPokemons_getOrderedPokemons,
-    searchPokemons_getAbilityDesc,
-    searchPokemons_getTypes,
-} from "../components/search/searchPokemonsSlice";
+import { searchPokemons_getOrderedPokemons } from "../components/search/searchPokemonsSlice";
 
 function fetchPokemonData(pokemon, dispatch) {
     let url = pokemon.url;
@@ -48,38 +44,4 @@ export const fetchPokemons = (randomNumber, limit, firstTime) => {
                 });
         };
     }
-};
-
-// забрати звідси fetchAbilityDesc і fetchTypes
-export const fetchAbilityDesc = name => {
-    return function (dispatch) {
-        fetch(`https://pokeapi.co/api/v2/ability/${name}`)
-            .then(response => response.json())
-            .then(data => dispatch(searchPokemons_getAbilityDesc(data)));
-    };
-};
-
-// зробити її через createAsyncThunk
-// export const fetchPokemon = (request, name) => {
-//     return function (dispatch) {
-//         dispatch(searchPokemons_showLoading(true));
-
-//         request(`https://pokeapi.co/api/v2/pokemon/${name}`)
-//             .then(data => dispatch(searchPokemons_getPokemon({ data, status: "ok" })))
-//             .catch(data => dispatch(searchPokemons_pokemonFetchingError(true))) // 404, якщо не знайдено покемона
-//             .finally(() => dispatch(searchPokemons_showLoading(false)));
-//     };
-// };
-
-export const fetchTypes = () => {
-    return function (dispatch) {
-        try {
-            fetch("https://pokeapi.co/api/v2/type/")
-                .then(response => response.json())
-                .then(data => dispatch(searchPokemons_getTypes(data.results)))
-                .catch(error => console.error(error));
-        } catch (e) {
-            console.error("Could not fetch", e);
-        }
-    };
 };

@@ -3,9 +3,14 @@ import "../../common/modal/modal.sass";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchPokemons, fetchAbilityDesc } from "../../../asyncActions/pokemons";
-import {searchPokemons_setActivePokemon, searchPokemons_filterPokemons, searchPokemons_addPokemonsCompare, searchPokemons_deletePokemonsCompare} from '../searchPokemonsSlice'
-// import { setActivePokemon, filterPokemons, comparePokemons, deleteComparePokemons } from "../../../store/searchReducer";
+import { fetchPokemons } from "../../../asyncActions/pokemons";
+import {
+    searchPokemons_setActivePokemon,
+    searchPokemons_filterPokemons,
+    searchPokemons_addPokemonsCompare,
+    searchPokemons_deletePokemonsCompare,
+    fetchPokemonAbilities,
+} from "../searchPokemonsSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBalanceScale } from "@fortawesome/free-solid-svg-icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -15,6 +20,7 @@ import { CSSTransition } from "react-transition-group";
 import BarChart from "../../common/charts/Doughnut";
 import SkeletonComponent from "../../common/skeleton/Skeleton";
 import ComparePokemons from "../search_Compare/ComparePokemons";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const SearchCards = () => {
     const dispatch = useDispatch();
@@ -25,7 +31,8 @@ const SearchCards = () => {
     const activePokemon = useSelector(state => state.searchPokemonsSlice.activePokemon);
     const pokemons = useSelector(state => state.searchPokemonsSlice.pokemonsOrdered);
     const pokemonsAfterFilter = useSelector(state => state.searchPokemonsSlice.pokemonsAfterFilter);
-    const abilitiesDesc = useSelector(state => state.searchPokemonsSlice.abilities);
+    const abilitiesDesc = useSelector(state => state.searchPokemonsSlice.pokemonAbilities);
+    const pokemonAbilitiesLoading = useSelector(state => state.searchPokemonsSlice.pokemonAbilitiesLoading);
     const searchedPokemon = useSelector(state => state.searchPokemonsSlice.searchedPokemon);
     const pokemonsToCompareArr = useSelector(state => state.searchPokemonsSlice.pokemonsToCompare);
     const showMarks = useSelector(state => state.searchPokemonsSlice.addComparisonMark);
@@ -109,8 +116,14 @@ const SearchCards = () => {
     }, [pokemons]);
 
     const getInfoAboutAbilities = item => {
-        dispatch(fetchAbilityDesc(item.ability.name));
+        dispatch(fetchPokemonAbilities(item.ability.name));
         setShowAbilityInfo(true);
+    };
+
+    const override = {
+        display: "block",
+        margin: "5px",
+        marginRight: "45%",
     };
 
     const content =
@@ -141,16 +154,25 @@ const SearchCards = () => {
                     <div
                         style={{ display: showAbilityInfo ? "flex" : "none" }}
                         className='cards-main-right-info-abilities-about'>
-                        {abilitiesDesc.effect_entries ? abilitiesDesc.effect_entries[1].effect : 1}{" "}
-                        <span onClick={() => setShowAbilityInfo(false)}>X</span>{" "}
+                        {pokemonAbilitiesLoading ? (
+                            <div>
+                                <ClipLoader
+                                    color={"#fd7d24"}
+                                    loading={pokemonAbilitiesLoading}
+                                    size={30}
+                                    cssOverride={override}
+                                />
+                            </div>
+                        ) : abilitiesDesc.effect_entries ? (
+                            abilitiesDesc.effect_entries[1].effect
+                        ) : (
+                            <div>Sorry, something goes wrong</div>
+                        )}
+                        <span onClick={() => setShowAbilityInfo(false)}>X</span>
                     </div>
                 </div>
                 <div className='cards-main-right-photo'>
-                    <LazyLoadImage
-                        effect='blur'
-                        src={searchedPokemon.sprites.other.dream_world.front_default}
-                        alt=''
-                    />
+                    <LazyLoadImage effect='blur' src={searchedPokemon.sprites.other.dream_world.front_default} alt='' />
                 </div>
                 {<BarChart stats={searchedPokemon.stats} />}
             </>
@@ -190,7 +212,20 @@ const SearchCards = () => {
                                     display: showAbilityInfo ? "flex" : "none",
                                 }}
                                 className='cards-main-right-info-abilities-about'>
-                                {abilitiesDesc.effect_entries ? abilitiesDesc.effect_entries[1].effect : ""}{" "}
+                                {pokemonAbilitiesLoading ? (
+                                    <div>
+                                        <ClipLoader
+                                            color={"#fd7d24"}
+                                            loading={pokemonAbilitiesLoading}
+                                            size={30}
+                                            cssOverride={override}
+                                        />
+                                    </div>
+                                ) : abilitiesDesc.effect_entries ? (
+                                    abilitiesDesc.effect_entries[1].effect
+                                ) : (
+                                    <div>Sorry, something goes wrong</div>
+                                )}
                                 <span onClick={() => setShowAbilityInfo(false)}>X</span>{" "}
                             </div>
                         </div>

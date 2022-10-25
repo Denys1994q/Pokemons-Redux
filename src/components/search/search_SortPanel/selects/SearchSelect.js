@@ -1,25 +1,25 @@
 import Select from "react-select";
 import { useEffect } from "react";
-import { fetchTypes } from "../../../../asyncActions/pokemons";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPokemons_filterPokemons } from "../../searchPokemonsSlice";
+import { searchPokemons_filterPokemons, fetchPokemonTypes } from "../../searchPokemonsSlice";
 
 const SearchSelect = props => {
     const { type, setSelectedType } = props;
 
     const dispatch = useDispatch();
 
-    const types = useSelector(state => state.searchPokemonsSlice.types);
+    const types = useSelector(state => state.searchPokemonsSlice.pokemonTypes);
 
     useEffect(() => {
-        dispatch(fetchTypes());
+        dispatch(fetchPokemonTypes());
     }, []);
 
-    const optionsTypes = types
-        ? types.map(item => {
-              return { value: item.name, label: item.name };
-          })
-        : null;
+    const optionsTypes =
+        types.results && types.results.length > 0
+            ? types.results.map(item => {
+                  return { value: item.name, label: item.name };
+              })
+            : null;
     const optionsAbilities = [{ value: "1", label: "1", backgroundColor: "#464646", color: "#fff" }];
 
     const colorStyles = {
@@ -31,8 +31,6 @@ const SearchSelect = props => {
             };
         },
     };
-
-    // знову не працює
 
     const filter = choice => {
         if (choice === null) {

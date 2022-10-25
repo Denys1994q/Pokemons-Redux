@@ -5,7 +5,6 @@ import { useHttp } from "../../../hooks/http.hook";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchPokemon } from "../../../asyncActions/pokemons";
 import { searchPokemons_setActivePokemon, searchPokemons_addComparisonMark, fetchPokemon } from "../searchPokemonsSlice";
 
 const SearchPanel = () => {
@@ -18,8 +17,8 @@ const SearchPanel = () => {
     const [searchTextFromInput, setSearchTextFromInput] = useState("");
     const [showError, setShowError] = useState(false);
 
-    const loading = useSelector(state => state.searchPokemonsSlice.loading);
-    const pokemonLoadingError = useSelector(state => state.searchPokemonsSlice.fetchPokemonError);
+    const loading = useSelector(state => state.searchPokemonsSlice.searchedPokemonLoading);
+    const pokemonLoadingError = useSelector(state => state.searchPokemonsSlice.searchedPokemonError);
     // const searchedPokemon = useSelector(state => state.searchPokemonsSlice.searchedPokemon);
 
     const searchPokemon = e => {
