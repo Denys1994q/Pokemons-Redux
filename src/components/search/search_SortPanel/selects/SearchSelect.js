@@ -1,7 +1,7 @@
 import Select from "react-select";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPokemons_filterPokemons, fetchPokemonTypes } from "../../searchPokemonsSlice";
+import { searchPokemons_filterPokemons, fetchPokemonTypes, searchPokemons_setActivePokemon } from "../../searchPokemonsSlice";
 
 const SearchSelect = props => {
     const { type, setSelectedType } = props;
@@ -33,6 +33,7 @@ const SearchSelect = props => {
     };
 
     const filter = choice => {
+        dispatch(searchPokemons_setActivePokemon(null));
         if (choice === null) {
             setSelectedType("");
 
