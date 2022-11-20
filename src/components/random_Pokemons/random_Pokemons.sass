@@ -66,3 +66,51 @@
             img
                 animation: opacityAnim 1s ease
                 width: 100%
+
+@media (max-width: 1100px)
+    .main
+        min-height: 50rem
+    .main-search
+        justify-content: center
+    .main-wrapper-left
+        display: none
+    .main-wrapper-right
+        width: 100%
+@media (max-width: 960px)
+    .coverPage
+        align-items: center
+    .main-cards
+        grid-template-columns: repeat(11, 1fr)
+@media (max-width: 700px)
+    .main-cards
+        grid-template-columns: repeat(9, 1fr)
+@media (max-width: 600px)
+    .main-cards
+        grid-template-columns: repeat(5, 1fr)
+    .main-cards-list-item div
+        width: 4rem
+    .main-cards-list-item
+        height: 5rem
+@media (max-width: 470px)
+    .main
+        padding: 3rem .5rem
+    .coverPage
+        background-position-x: center
+        &-wrapper
+            width: 100%
+            height: auto
+            padding: 0 .2rem
+        &-title
+            font-size: 3rem
+            width: 100%
+            margin: 0
+            background: #308796
+            border: 1px solid #676360
+    .btn-background-slide
+        font-size: 1rem
+    .navbar-img img
+        width: 70%
+    .main-cards
+        grid-template-columns: repeat(3, 1fr)
+    .main-cards-list-item
+        height: 7rem

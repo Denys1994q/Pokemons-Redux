@@ -5,7 +5,11 @@ import { useHttp } from "../../../hooks/http.hook";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPokemons_setActivePokemon, searchPokemons_addComparisonMark, fetchPokemon } from "../searchPokemonsSlice";
+import {
+    searchPokemons_setActivePokemon,
+    searchPokemons_addComparisonMark,
+    fetchPokemon,
+} from "../searchPokemonsSlice";
 
 const SearchPanel = () => {
     const dispatch = useDispatch();
@@ -53,20 +57,20 @@ const SearchPanel = () => {
                     placeholder='pokemon name or id'
                 />
                 {showError ? <p className='main-search-input-error'>Error</p> : null}
-                <button className='btn compareBtn' onClick={() => comparePokemons()}>
-                    Compare Pokemons
-                </button>
+                {loading ? (
+                    <div className='pakman'>
+                        <PacmanLoader color={"#fd7d24"} loading={loading} size={15} />
+                    </div>
+                ) : (
+                    <button onClick={() => findPokemon()} className='btn-search'>
+                        <i className='fa fa-search'></i>
+                    </button>
+                )}
                 {showMarks ? <div className='compare__choose'>choose 2 pokemons</div> : null}
             </div>
-            {loading ? (
-                <div className='pakman'>
-                    <PacmanLoader color={"#fd7d24"} loading={loading} size={15} />
-                </div>
-            ) : (
-                <button onClick={() => findPokemon()} className='btn-search'>
-                    <i className='fa fa-search'></i>
-                </button>
-            )}
+            <button className='btn compareBtn' onClick={() => comparePokemons()}>
+                Compare Pokemons
+            </button>
             {pokemonLoadingError ? (
                 <div className='search-status'>
                     <img src={failure} alt='pokemon not found' />

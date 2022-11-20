@@ -14,7 +14,6 @@
         &-right
             width: 30%
             border-radius: 1rem
-            // background: url('../../../imgs/backCard1.jpg')
             background: url('../../../imgs/backNew1.webp')
             background-size: contain
             max-height: 50rem
@@ -210,3 +209,57 @@
     background: #f7de3f
 .fairy
     background: #fdb9e9
+
+@media (max-width: 1300px)
+    .cards-main
+        justify-content: center
+    .cards-search
+        grid-template-columns: repeat(3, 1fr)
+@media (max-width: 1250px)
+    .cards-main
+        flex-wrap: wrap
+        &-left
+            width: 100%
+            order: 2
+        &-right
+            width: auto
+            margin-bottom: 2rem
+            order: 1
+    .cards-search
+        grid-template-columns: repeat(5, 1fr)
+    .emptyCard
+        height: auto
+    .skeleton-left
+        margin-right: 2rem
+@media (max-width: 850px)
+    .cards-search
+        grid-template-columns: repeat(3, 1fr)
+    .cards-main-right
+        width: 55%
+        margin-top: 2rem
+@media (max-width: 650px)
+    .cards-main-right
+        width: 65%
+@media (max-width: 600px)
+    .cards-main-right
+        width: 80%
+@media (max-width: 500px)
+    .cards-search
+        grid-template-columns: repeat(2, 1fr)
+    .cards-main-right
+        width: 100%
+@media (max-width: 400px)
+    .cards-search
+        grid-template-columns: repeat(1, 1fr)
+    .cards-main-right
+        overflow: hidden
+    .cards-main-right-photo img
+        width: 13rem
+    .cards-main-right-photo
+        justify-content: end
+        margin-right: 2rem
+@media (max-width: 360px)
+    .cards-main-right-photo img
+        width: 11rem
+    .cards-main-right-photo
+        margin-right: 0

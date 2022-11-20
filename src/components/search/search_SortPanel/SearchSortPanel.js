@@ -57,9 +57,6 @@ const SearchSortPanel = () => {
                     <li className='sorted-types'>
                         <SearchSelect type={"types"} setSelectedType={setSelectedType} />
                     </li>
-                    {/* <li className='sorted-types'>
-                        <SearchSelect type={"abilities"} setSelectedType={setSelectedType} />
-                    </li> */}
                     <FontAwesomeIcon icon={faGripLines} size='2x' rotation={90} inverse />
                     {showData}
                 </ul>

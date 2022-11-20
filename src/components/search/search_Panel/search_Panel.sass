@@ -1,8 +1,11 @@
 .main-search
     display: flex
+    flex-wrap: wrap
+    row-gap: 1rem
     justify-content: end
     &-input
         display: flex
+        flex-wrap: wrap
         justify-content: center
         gap: 2rem
         position: relative
@@ -23,8 +26,7 @@
             color: white
             font-size: 1.5rem
 .search-status
-    position: absolute
-    right: 35rem
+    position: static
     img
         display: flex
         align-items: center
@@ -35,3 +37,25 @@
         margin-top: .7rem
 .pakman
     margin-top: 1.2rem
+
+@media (max-width: 1300px)
+    .main-search-input
+        justify-content: center
+        &-error
+            padding: .2rem .5rem
+@media (max-width: 700px)
+    .main-search-input
+        gap: 1rem
+    .sorted li
+        max-width: 15rem
+    .main-search-input input
+        max-width: 25rem
+@media (max-width: 400px)
+    .main-search-input-wrapper
+        width: 100%
+        text-align: center
+        margin-bottom: 5rem
+    .main-search-input input
+        margin-bottom: .2rem
+        width: 100%
+        max-width: none

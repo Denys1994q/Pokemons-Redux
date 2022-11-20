@@ -28,6 +28,7 @@
     &:disabled
         opacity: .2
 .btn-search
+    margin-left: 1rem
     width: 5rem
     height: 5rem
     background: #f78b3f
@@ -42,15 +43,13 @@
     cursor: pointer
     border: none
 .compareBtn
-    position: absolute
-    top: 0
-    right: -47rem
     text-transform: uppercase
-    background: red
+    background: #ed4949
     overflow: hidden
     padding: .5rem
     cursor: pointer
     border: none
+    position: relative
     &:before
         content: ''
         width: 2em
@@ -64,3 +63,22 @@
         color: white
         &:before
             animation: move-light .4s
+
+@media (max-width: 700px)
+    .btn-search
+        margin-left: 1rem
+    .compareBtn
+        width: 100%
+        margin: 0
+    .btn-center
+        margin-left: 0
+@media (max-width: 500px)
+    .btn-background-slide
+        width: 100%
+@media (max-width: 400px)
+    .compareBtn
+        width: 100%
+        margin: 0
+    .btn-search
+        margin-left: 0
+        display: block

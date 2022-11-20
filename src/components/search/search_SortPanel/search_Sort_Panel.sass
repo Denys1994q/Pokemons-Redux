@@ -63,3 +63,25 @@
         background: #464646
     &__menu-list::-webkit-scrollbar-thumb
         background: #888
+
+@media (max-width: 1300px)
+    .opened-sort
+        margin-top: 2rem
+        margin-bottom: 1rem
+@media (max-width: 800px)
+    .opened-sort
+        margin-top: 1rem
+        margin-bottom: 0
+        padding: 2rem
+        display: block
+        text-align: center
+    .sorted
+        flex-wrap: wrap
+        justify-content: center
+        gap: 1rem
+    .sorted-wrapper
+        padding: 1rem 0
+@media (max-width: 400px)
+    .sorted
+        justify-content: start
+        gap: 3rem

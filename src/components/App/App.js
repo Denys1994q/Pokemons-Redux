@@ -5,12 +5,6 @@ import Search from "../search/Search";
 import RandomPokemons from "../random_Pokemons/randomPokemons";
 
 function App() {
-    // зробити пульсуючу кнопку
-    // додати спінер загрузки на карточки можна й скелетон на кожну
-
-    // гра вгадай по абілітіс покемона
-    // показується опис і назва абіліті і знизу 5 фото покемонів, 1 правильний
-
     return (
         <div className='container'>
             <div className='navbar'>
