@@ -118,7 +118,7 @@ const searchPokemonsSlice = createSlice({
                 state.searchedPokemonError = true;
                 state.searchedPokemonLoading = false;
             });
-        builder // абілітіс покемона 
+        builder // абілітіс покемона
             .addCase(fetchPokemonAbilities.pending, state => {
                 state.pokemonAbilitiesLoading = true;
                 state.pokemonAbilitiesError = false;
@@ -132,7 +132,7 @@ const searchPokemonsSlice = createSlice({
                 state.pokemonAbilitiesError = true;
                 state.pokemonAbilitiesLoading = false;
             });
-        builder // типи покемонів 
+        builder // типи покемонів
             .addCase(fetchPokemonTypes.pending, state => {
                 state.pokemonTypesLoading = true;
                 state.pokemonTypesError = false;

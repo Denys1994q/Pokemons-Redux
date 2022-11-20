@@ -57,6 +57,7 @@ const SearchPanel = () => {
                     placeholder='pokemon name or id'
                 />
                 {showError ? <p className='main-search-input-error'>Error</p> : null}
+                {showMarks ? <div className='compare__choose'>choose 2 pokemons</div> : null}
                 {loading ? (
                     <div className='pakman'>
                         <PacmanLoader color={"#fd7d24"} loading={loading} size={15} />
@@ -66,7 +67,6 @@ const SearchPanel = () => {
                         <i className='fa fa-search'></i>
                     </button>
                 )}
-                {showMarks ? <div className='compare__choose'>choose 2 pokemons</div> : null}
             </div>
             <button className='btn compareBtn' onClick={() => comparePokemons()}>
                 Compare Pokemons
