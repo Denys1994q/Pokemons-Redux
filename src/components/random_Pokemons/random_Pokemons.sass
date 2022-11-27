@@ -5,10 +5,16 @@
     padding: 7rem 1rem
     background: url('../../imgs/back5.jpg') no-repeat
     background-size: cover
+    @include respond(tab-land)
+        min-height: 50rem
+    @include respond(phoneL)
+        padding: 3rem .5rem
     &-wrapper
         display: flex
         &-left
             width: 36%
+            @include respond(tab-land)
+                display: none
             &-img
                 width: 52rem
                 height: 55rem
@@ -43,10 +49,20 @@
         &-right
             width: 65%
             margin-top: 3rem
+            @include respond(tab-land)
+                width: 100%
 .main-cards
     grid-template-rows: repeat(6, 1fr)
     grid-template-columns: repeat(12, 1fr)
     grid-gap: .5rem
+    @include respond(tab-land)
+        grid-template-columns: repeat(11, 1fr)
+    @include respond(tab-port)
+        grid-template-columns: repeat(9, 1fr)
+    @include respond(phoneL)
+        grid-template-columns: repeat(5, 1fr)
+    @include respond(phoneM)
+        grid-template-columns: repeat(3, 1fr)
     &-list-item
         height: 8rem
         border: 1px solid #b6b4b4
@@ -57,43 +73,26 @@
         justify-content: center
         align-items: center
         animation: rightToLeft .4s ease
+        @include respond(phoneL)
+            height: 5rem
+        @include respond(phoneM)
+            height: 7rem
         &-active
             background: #ff622d
         &:hover
             transform: translateY(-5px)
         div
             width: 5rem
+            @include respond(phoneL)
+                width: 4rem
             img
                 animation: opacityAnim 1s ease
                 width: 100%
 
-@media (max-width: 1100px)
-    .main
-        min-height: 50rem
-    .main-search
-        justify-content: center
-    .main-wrapper-left
-        display: none
-    .main-wrapper-right
-        width: 100%
 @media (max-width: 960px)
     .coverPage
         align-items: center
-    .main-cards
-        grid-template-columns: repeat(11, 1fr)
-@media (max-width: 700px)
-    .main-cards
-        grid-template-columns: repeat(9, 1fr)
-@media (max-width: 600px)
-    .main-cards
-        grid-template-columns: repeat(5, 1fr)
-    .main-cards-list-item div
-        width: 4rem
-    .main-cards-list-item
-        height: 5rem
 @media (max-width: 470px)
-    .main
-        padding: 3rem .5rem
     .coverPage
         background-position-x: center
         &-wrapper
@@ -106,14 +105,5 @@
             margin: 0
             background: #308796
             border: 1px solid #676360
-    .btn-background-slide
-        font-size: 1rem
     .navbar-img img
         width: 70%
-    .main-cards
-        grid-template-columns: repeat(5, 1fr)
-    .main-cards-list-item
-        height: 7rem
-@media (max-width: 390px)
-    .main-cards
-        grid-template-columns: repeat(3, 1fr)

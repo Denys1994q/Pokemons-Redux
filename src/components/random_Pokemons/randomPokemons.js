@@ -1,4 +1,4 @@
-import "./random_Pokemons.sass";
+// import "./random_Pokemons.sass";
 import pokedex from "../../imgs/pokedex1.png";
 //
 import Pokemons_Btns from "./pokemons_Btns/Pokemons_Btns";

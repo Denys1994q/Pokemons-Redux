@@ -2,34 +2,46 @@
     max-width: 1400px
     margin: 0 auto
     padding: .2rem
-.navbar
-    position: fixed
-    z-index: 99
-    margin-bottom: 0
-    padding: .3rem
-    &-img
-        width: 10rem
-        opacity: .7
-        padding: 1rem
-        img
-            width: 100%
-.coverPage
-    padding: 5rem 0rem
+.first-page
     height: 100vh
-    width: 100%
     background: url('../../imgs/back.jpg')
     background-size: cover
-    display: flex
-    justify-content: center
-    &-wrapper
-        width: 40rem
-        height: 20rem
-    &-title
+    color: #fff
+    &__info
+        height: 100vh
+        display: inline-flex
+        align-items: center
+        flex-direction: row
+        padding: 0 1rem
+        overflow: hidden
+    &__title
+        padding: 0rem 1rem
         text-align: center
-        font-size: 4.5rem
-        border: 2px solid #FFC090
-        color: white
-        margin-top: 3rem
-        margin-bottom: 1rem
+        font-size: 4.2rem
+        border: 1px solid #aaa6a6
         animation: topToBottom 1s ease-in-out
         animation-delay: 1s
+        margin-bottom: 2rem
+        position: relative
+        &:before
+            content: ''
+            width: 2px
+            height: 350%
+            position: absolute
+            bottom: 105%
+            left: 50%
+            background: #aaa6a6
+    &__list
+        font-size: 1.2rem
+        padding-left: 1rem
+        li
+            position: relative
+            padding-left: 1.5rem
+            &:before
+                content: ''
+                width: 4px
+                height: 4px
+                background: #aaa6a6
+                position: absolute
+                top: 50%
+                left: 0

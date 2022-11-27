@@ -1,4 +1,3 @@
-import "../search_Cards/search_cards.sass";
 import "../../common/modal/modal.sass";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -129,10 +128,21 @@ const SearchCards = () => {
     const content =
         searchedPokemon && !activePokemon && activePokemon !== 0 ? (
             <>
-                <p className='cards-main-right-title'>{searchedPokemon.name}</p>
-                <p className='cards-main-right-info'>Height: {searchedPokemon.height}</p>
-                <p className='cards-main-right-info'>Weight: {searchedPokemon.weight}</p>
-                <p className='cards-main-right-info'>Experience: {searchedPokemon.base_experience}</p>
+                <div className='cards-main-right-info-top'>
+                    <div className='cards-main-right-info-top-left'>
+                        <p className='cards-main-right-title'>{searchedPokemon.name}</p>
+                        <p className='cards-main-right-info'>Height: {searchedPokemon.height}</p>
+                        <p className='cards-main-right-info'>Weight: {searchedPokemon.weight}</p>
+                        <p className='cards-main-right-info'>Experience: {searchedPokemon.base_experience}</p>
+                    </div>
+                    <div className='cards-main-right-info-top-right'>
+                        <LazyLoadImage
+                            effect='blur'
+                            src={searchedPokemon.sprites.other.dream_world.front_default}
+                            alt=''
+                        />
+                    </div>
+                </div>
                 <div className='cards-main-right-info-abilities'>
                     <div className='cards-main-right-info-abilities-left'>
                         <p>Abilities:</p>
@@ -171,9 +181,6 @@ const SearchCards = () => {
                         <span onClick={() => setShowAbilityInfo(false)}>X</span>
                     </div>
                 </div>
-                <div className='cards-main-right-photo'>
-                    <LazyLoadImage effect='blur' src={searchedPokemon.sprites.other.dream_world.front_default} alt='' />
-                </div>
                 {<BarChart stats={searchedPokemon.stats} />}
             </>
         ) : (
@@ -181,12 +188,28 @@ const SearchCards = () => {
                 {(pokemonsAfterFilter.length > 0 && activePokemon && pokemonsAfterFilter[activePokemon].name) ||
                 activePokemon === 0 ? (
                     <>
-                        <p className='cards-main-right-title'>{pokemonsAfterFilter[activePokemon].name}</p>
-                        <p className='cards-main-right-info'>Height: {pokemonsAfterFilter[activePokemon].height}</p>
-                        <p className='cards-main-right-info'>Weight: {pokemonsAfterFilter[activePokemon].weight}</p>
-                        <p className='cards-main-right-info'>
-                            Experience: {pokemonsAfterFilter[activePokemon].base_experience}
-                        </p>
+                        <div className='cards-main-right-info-top'>
+                            <div className='cards-main-right-info-top-left'>
+                                <p className='cards-main-right-title'>{pokemonsAfterFilter[activePokemon].name}</p>
+                                <p className='cards-main-right-info'>
+                                    Height: {pokemonsAfterFilter[activePokemon].height}
+                                </p>
+                                <p className='cards-main-right-info'>
+                                    Weight: {pokemonsAfterFilter[activePokemon].weight}
+                                </p>
+                                <p className='cards-main-right-info'>
+                                    Experience: {pokemonsAfterFilter[activePokemon].base_experience}
+                                </p>
+                            </div>
+                            <CSSTransition in={animateFromList} timeout={500} classNames='scale-anim' unmountOnExit>
+                                <div className='cards-main-right-info-top-right'>
+                                    <LazyLoadImage
+                                        effect='blur'
+                                        src={pokemonsAfterFilter[activePokemon].sprites.other.dream_world.front_default}
+                                    />
+                                </div>
+                            </CSSTransition>
+                        </div>
                         <div className='cards-main-right-info-abilities'>
                             <div className='cards-main-right-info-abilities-left'>
                                 <p>Abilities:</p>
@@ -229,14 +252,6 @@ const SearchCards = () => {
                                 <span onClick={() => setShowAbilityInfo(false)}>X</span>{" "}
                             </div>
                         </div>
-                        <CSSTransition in={animateFromList} timeout={500} classNames='scale-anim' unmountOnExit>
-                            <div className='cards-main-right-photo'>
-                                <LazyLoadImage
-                                    effect='blur'
-                                    src={pokemonsAfterFilter[activePokemon].sprites.other.dream_world.front_default}
-                                />
-                            </div>
-                        </CSSTransition>
                         {<BarChart stats={pokemonsAfterFilter[activePokemon].stats} />}
                     </>
                 ) : (
