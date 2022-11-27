@@ -3,7 +3,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const SkeletonComponent = () => {
     return (
-        // <SkeletonTheme baseColor="#E4DCCF" highlightColor="#9F8772" enableAnimation={false} >
         <SkeletonTheme baseColor='#2C3639' highlightColor='#395B64' enableAnimation={true}>
             <div className='skeleton-wrapper'>
                 <div className='skeleton-left'>

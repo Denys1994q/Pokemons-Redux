@@ -277,7 +277,7 @@ const SearchCards = () => {
             </div>
 
             {pokemonsAfterFilter.length === pokemons.length ? (
-                <button className='btn btn-center' onClick={() => dispatch(fetchPokemons(null, 12))}>
+                <button className='btn btn-showMore' onClick={() => dispatch(fetchPokemons(null, 12))}>
                     Show more
                 </button>
             ) : null}

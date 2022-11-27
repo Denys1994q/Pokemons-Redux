@@ -1,7 +1,10 @@
-import "../search_SortPanel/search_Sort_Panel.sass";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPokemons_filterPokemons, searchPokemons_sortPokemons, searchPokemons_openSortedBlock } from "../searchPokemonsSlice";
+import {
+    searchPokemons_filterPokemons,
+    searchPokemons_sortPokemons,
+    searchPokemons_openSortedBlock,
+} from "../searchPokemonsSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripLines } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,10 +24,7 @@ const SearchSortPanel = () => {
 
     const showData = data.map((item, i) => {
         return (
-            <li
-                key={i}
-                style={{ background: i === activeType ? "#FA7070" : null }}
-                onClick={() => sort(item, i)}>
+            <li key={i} style={{ background: i === activeType ? "#FA7070" : null }} onClick={() => sort(item, i)}>
                 {item}
             </li>
         );
@@ -36,7 +36,9 @@ const SearchSortPanel = () => {
             dispatch(searchPokemons_sortPokemons(type));
         } else {
             setActiveType(null);
-            selectedType ? dispatch(searchPokemons_filterPokemons(selectedType)) : dispatch(searchPokemons_filterPokemons(""));
+            selectedType
+                ? dispatch(searchPokemons_filterPokemons(selectedType))
+                : dispatch(searchPokemons_filterPokemons(""));
         }
     };
 
@@ -45,11 +47,7 @@ const SearchSortPanel = () => {
             <div className='opened-sort'>
                 Sort & Filter
                 <span onClick={() => dispatch(searchPokemons_openSortedBlock())}>
-                    {openSortedBlock ? (
-                        <i className='fa fa-caret-up'></i>
-                    ) : (
-                        <i className='fa fa-caret-down'></i>
-                    )}
+                    {openSortedBlock ? <i className='fa fa-caret-up'></i> : <i className='fa fa-caret-down'></i>}
                 </span>
             </div>
             <div style={{ display: openSortedBlock ? "block" : "none" }} className='sorted-wrapper'>
