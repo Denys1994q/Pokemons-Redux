@@ -1,5 +1,3 @@
-import "../search_Compare/search_compare.sass";
-
 import { useSelector, useDispatch } from "react-redux";
 import { searchPokemons_addComparisonMark, searchPokemons_deletePokemonsCompare } from "../searchPokemonsSlice";
 import vs from "../../../imgs/vs.webp";
@@ -7,8 +5,8 @@ import vs from "../../../imgs/vs.webp";
 const ComparePokemons = () => {
     const dispatch = useDispatch();
 
-    const pokemonsAfterFilter = useSelector((state) => state.searchPokemonsSlice.pokemonsAfterFilter);
-    const pokemonsToCompareArr = useSelector((state) => state.searchPokemonsSlice.pokemonsToCompare);
+    const pokemonsAfterFilter = useSelector(state => state.searchPokemonsSlice.pokemonsAfterFilter);
+    const pokemonsToCompareArr = useSelector(state => state.searchPokemonsSlice.pokemonsToCompare);
 
     const closeAndCleanArr = () => {
         dispatch(searchPokemons_addComparisonMark(false));
@@ -25,10 +23,7 @@ const ComparePokemons = () => {
                 {/* <img className='compare__vs' src={vs} alt='' /> */}
                 <div className='compare__text__left'>
                     <img
-                        src={
-                            pokemonsAfterFilter[pokemonsToCompareArr[0]].sprites.other.dream_world
-                                .front_default
-                        }
+                        src={pokemonsAfterFilter[pokemonsToCompareArr[0]].sprites.other.dream_world.front_default}
                         alt=''
                     />
                     <p>
@@ -44,34 +39,22 @@ const ComparePokemons = () => {
                         <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].base_experience}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[0].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[0].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[1].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[1].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[2].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[2].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[3].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[3].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[4].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[4].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[5].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[0]].stats[5].base_stat}</span>
                     </p>
                 </div>
                 <div className='compare__text__center'>
@@ -89,10 +72,7 @@ const ComparePokemons = () => {
                 </div>
                 <div className='compare__text__right'>
                     <img
-                        src={
-                            pokemonsAfterFilter[pokemonsToCompareArr[1]].sprites.other.dream_world
-                                .front_default
-                        }
+                        src={pokemonsAfterFilter[pokemonsToCompareArr[1]].sprites.other.dream_world.front_default}
                         alt=''
                     />
                     <p>
@@ -108,34 +88,22 @@ const ComparePokemons = () => {
                         <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].base_experience}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[0].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[0].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[1].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[1].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[2].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[2].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[3].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[3].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[4].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[4].base_stat}</span>
                     </p>
                     <p>
-                        <span>
-                            {pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[5].base_stat}
-                        </span>
+                        <span>{pokemonsAfterFilter[pokemonsToCompareArr[1]].stats[5].base_stat}</span>
                     </p>
                 </div>
             </div>

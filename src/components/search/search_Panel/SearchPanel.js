@@ -1,4 +1,3 @@
-import "../search_Panel/search_Panel.sass";
 import failure from "../../../imgs/sad.jpg";
 //
 import { useHttp } from "../../../hooks/http.hook";

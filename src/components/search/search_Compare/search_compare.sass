@@ -63,6 +63,10 @@
         display: flex
         animation: opacityAnim .7s ease-in-out
         font-size: 1.6rem
+        @include respond(tab-land)
+            width: 90%
+        @include respond(phoneM)
+            font-size: 1.2rem
         &__left, &__right, &__center
             text-align: center
             display: flex
@@ -73,6 +77,12 @@
                 width: 18rem
                 height: 18rem
                 margin-bottom: 4rem
+                @include respond(phoneL)
+                    width: 13rem
+                    height: 13rem
+                @include respond(phoneM)
+                    width: 10rem
+                    height: 10rem
             p
                 width: 30rem
                 span
@@ -85,17 +95,3 @@
             width: 33%
         &__right
             width: 33%
-
-@media (max-width: 1000px)
-    .compare__text
-        width: 90%
-@media (max-width: 600px)
-    .compare__text__left img, .compare__text__right img, .compare__text__center img
-        width: 13rem
-        height: 13rem
-@media (max-width: 400px)
-    .compare__text__left img, .compare__text__right img, .compare__text__center img
-        width: 10rem
-        height: 10rem
-    .compare__text
-        font-size: 1.2rem

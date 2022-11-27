@@ -199,11 +199,6 @@
         background: #fd7d24
         animation: opacityAnim .4s
         color: white
-// .chart
-//     background: #D8D8D8
-//     width: 100%
-//     color: white
-//     margin-top: 2rem
 .emptyCard
     width: 100%
     height: 40rem
@@ -212,6 +207,8 @@
     align-items: center
     @include respond(tab-land)
         height: auto
+    @include respond(phoneL)
+        padding: 0
 .activeType
     background: blue
 .sorry-msg
