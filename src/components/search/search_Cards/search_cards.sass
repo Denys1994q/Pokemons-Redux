@@ -4,6 +4,8 @@
     padding: 7rem 1rem 7rem 1rem
     background: url('../../../imgs/back1.jpg')
     background-size: contain
+    @include respond(phoneL)
+        padding: 2rem 1rem 2rem 1rem
     &-main
         display: flex
         flex-wrap: wrap
@@ -49,6 +51,7 @@
                 font-weight: bold
                 @include respond(tab-port)
                     margin: 1rem 0rem
+                    padding: 1rem
                     width: 100%
             &-info
                 font-size: 1.4rem
@@ -57,6 +60,7 @@
                 background: #E94560
                 @include respond(tab-port)
                     margin: 0
+                    padding: 1rem
                     text-align: center
                     width: 100%
                 &-top
