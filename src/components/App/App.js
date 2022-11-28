@@ -1,5 +1,3 @@
-import "../App/app.sass";
-//
 import Search from "../search/Search";
 import RandomPokemons from "../random_Pokemons/randomPokemons";
 

@@ -11,7 +11,7 @@ import Modal from "../../common/modal/Modal";
 const Pokemons_Btns = () => {
     const dispatch = useDispatch();
 
-    const closedFirstBtn = useSelector((state) => state.randomPokemonsSlice.closeFirstBtn);
+    const closedFirstBtn = useSelector(state => state.randomPokemonsSlice.closeFirstBtn);
 
     const [closeSecondBtn, setCloseSecondBtn] = useState(true);
     const [closeThirdBtn, setCloseThirdBtn] = useState(true);
@@ -57,25 +57,13 @@ const Pokemons_Btns = () => {
 
     return (
         <>
-            <button
-                disabled={closedFirstBtn}
-                className='btn-background-slide'
-                onClick={() => getEmptyPokeballs()}
-            >
+            <button disabled={closedFirstBtn} className='btn btn-background-slide' onClick={() => getEmptyPokeballs()}>
                 Get pokeballs
             </button>
-            <button
-                disabled={closeSecondBtn}
-                onClick={() => getPokemons()}
-                className='btn-background-slide'
-            >
+            <button disabled={closeSecondBtn} onClick={() => getPokemons()} className='btn btn-background-slide'>
                 Open
             </button>
-            <button
-                disabled={closeThirdBtn}
-                onClick={() => getPokemon()}
-                className=' btn-background-slide'
-            >
+            <button disabled={closeThirdBtn} onClick={() => getPokemon()} className='btn btn-background-slide'>
                 Get Pokemon
             </button>
             <Modal />

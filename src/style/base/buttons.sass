@@ -2,100 +2,69 @@
     display: inline-block
     height: 5rem
     background: #9e9e9e
-    color: white
-    margin-right: 1rem
     cursor: pointer
     border: none
-.btn-background-slide
-    display: inline-block
-    width: 170px
-    font-size: 1.4rem
-    position: relative
-    background-color: #F2F2F2
-    text-transform: uppercase
-    color: black
-    padding: 1rem
-    cursor: pointer
-    margin-right: 1rem
-    transition: ease-out .3s
-    box-shadow: inset 0 0 0 0 #078686
-    border: 1px solid white
     border-radius: 4px
-    outline: none
     &:hover
-        box-shadow: inset 170px 0 0 0 #1a5b66
+        border: 1px solid #fff
+        background: #1a5b66
         color: white
-    &:disabled
-        opacity: .2
-.btn-search
-    margin-left: 1rem
-    width: 5rem
-    height: 5rem
-    background: #68B984
-    cursor: pointer
-    border: none
-    &:hover
-        background: #FED049
-    i
-        color: white
-.btn-showMore
-    padding: 0 2rem
-    margin-left: 1%
-    background: #68B984
-    color: #fff
-    &:hover
-        color: #fff
-        background: #FED049
-    &:focus
-        color: #fff
-.compareBtn
-    text-transform: uppercase
-    background: #ed4949
-    overflow: hidden
-    padding: .5rem
-    cursor: pointer
-    border: none
-    position: relative
-    color: #fff
-    &:focus
-        color: #fff
-    &:before
-        content: ''
-        width: 2em
-        height: 100%
-        position: absolute
-        top: 0
-        left: 0
-        background-color: rgba(#fff, 0.6)
-        transform: translateX(-4em) skewX(-45deg)
-    &:hover
-        color: white
-        &:before
-            animation: move-light .4s
-
-@media (max-width: 700px)
-    .btn-search
-        margin-left: 1rem
-    .compareBtn
-        width: 100%
-        margin: 0
-@media (max-width: 500px)
-    .btn-background-slide
-        width: 100%
-        margin-right: 0
+    &-background-slide
+        position: relative
+        width: 17rem
+        background-color: #F2F2F2
+        box-shadow: inset 0 0 0 0 #078686
+        border: 1px solid #fff
+        transition: ease-out .3s
+        &:not(:last-child)
+            margin-right: 1rem
+        @include respond(phoneL)
+            width: 100%
+            margin-right: 0
         &:hover
-            box-shadow: inset 400px 0 0 0 #1a5b66
-    .btn-showMore
-        display: block
-        width: 100%
-        padding: 0
-        margin: 0
-@media (max-width: 400px)
-    .main-search-input-wrapper
-        margin-bottom: 0
-    .compareBtn
-        width: 100%
-        margin: 0
-    .btn-search
-        width: 20%
-        margin-left: 0
+            box-shadow: inset 170px 0 0 0 #1a5b66
+            color: #fff
+            @include respond(phoneL)
+                box-shadow: inset 400px 0 0 0 #1a5b66
+        &:disabled
+            opacity: .2
+    &-search
+        margin-left: 1rem
+        width: 5rem
+        i
+            color: white
+        @include respond(phoneM)
+            width: 20%
+            margin-left: 0
+    &-showMore
+        padding: 0 2rem
+        margin-left: 1%
+        @include respond(phoneL)
+            display: block
+            width: 100%
+            padding: 0
+            margin: 0
+    &-compareBtn
+        position: relative
+        padding: .5rem
+        background: #f32626
+        color: #fff
+        overflow: hidden
+        @include respond(phoneL)
+            width: 100%
+            margin: 0
+        &:focus
+            color: #fff
+        &:before
+            content: ''
+            width: 2em
+            height: 100%
+            position: absolute
+            top: 0
+            left: 0
+            background-color: rgba(#fff, 0.6)
+            transform: translateX(-4em) skewX(-45deg)
+        &:hover
+            background: #f32626
+            &:before
+                animation: move-light .4s

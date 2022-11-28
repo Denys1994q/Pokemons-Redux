@@ -20,7 +20,6 @@ const ComparePokemons = () => {
                 <span className='compare__close' onClick={() => closeAndCleanArr()}>
                     X
                 </span>
-                {/* <img className='compare__vs' src={vs} alt='' /> */}
                 <div className='compare__text__left'>
                     <img
                         src={pokemonsAfterFilter[pokemonsToCompareArr[0]].sprites.other.dream_world.front_default}

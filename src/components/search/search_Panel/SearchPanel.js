@@ -62,12 +62,12 @@ const SearchPanel = () => {
                         <PacmanLoader color={"#fd7d24"} loading={loading} size={15} />
                     </div>
                 ) : (
-                    <button onClick={() => findPokemon()} className='btn-search'>
+                    <button onClick={() => findPokemon()} className='btn btn-search'>
                         <i className='fa fa-search'></i>
                     </button>
                 )}
             </div>
-            <button className='btn compareBtn' onClick={() => comparePokemons()}>
+            <button className='btn btn-compareBtn' onClick={() => comparePokemons()}>
                 Compare Pokemons
             </button>
             {pokemonLoadingError ? (
