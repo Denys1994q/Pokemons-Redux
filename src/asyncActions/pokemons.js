@@ -1,4 +1,4 @@
-import { randomPokemons_getPokemons } from "../components/random_Pokemons/randomPokemonsSlice";
+import { randomPokemons_getPokemons } from "../components/random-pokemons/randomPokemonsSlice";
 import { searchPokemons_getOrderedPokemons } from "../components/search/searchPokemonsSlice";
 
 function fetchPokemonData(pokemon, dispatch) {

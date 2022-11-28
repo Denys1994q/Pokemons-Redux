@@ -1,0 +1,48 @@
+.random-pokemons
+    width: 100%
+    margin: 0 auto
+    margin-top: .2rem
+    padding: 7rem 1rem
+    background: url('../../imgs/back5.jpg') no-repeat
+    background-size: cover
+    @include respond(tab-land)
+        min-height: 50rem
+    @include respond(phoneL)
+        padding: 1rem .5rem
+    &__searchBtns
+        display: flex
+        flex-wrap: wrap
+        row-gap: 1rem
+        justify-content: end
+    &__wrapper
+        display: flex
+        @include respond(tab-land)
+            flex-wrap: wrap
+    &__left
+        width: 36%
+        @include respond(tab-land)
+            width: 100%
+        &-imgWrapper
+            width: 52rem
+            height: 55rem
+            object-fit: contain
+            position: relative
+            margin-top: -8rem
+            margin-left: -3rem
+            @include respond(tab-land)
+                margin-top: 0
+                margin-left: 50%
+                transform: translate(-50%, 0)
+            @include respond(phoneL)
+                width: 42rem
+                height: auto
+        &-img
+            width: 100%
+            height: 100%
+            object-fit: contain
+            border-radius: 2%
+    &__right
+        width: 65%
+        margin-top: 3rem
+        @include respond(tab-land)
+            width: 100%

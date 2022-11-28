@@ -1,7 +1,7 @@
 // компоненти
-import Search_Panel from "./search_Panel/SearchPanel";
-import Search_SortPanel from "./search_SortPanel/SearchSortPanel";
-import Search_Cards from "./search_Cards/SearchCards";
+import Panel from "./panel/SearchPanel";
+import SortPanel from "./sort-panel/SearchSortPanel";
+import Cards from "./cards/SearchCards";
 
 const Search = () => {
     // ТРЕБА ЗРОБИТИ ЩОБ НЕ ПОКАЗУВАЛО ЩО ВВЕСТИ ПОВЫДОМЛЕННЯ ТРЕБА
@@ -11,9 +11,9 @@ const Search = () => {
 
     return (
         <div className='cards'>
-            <Search_Panel />
-            <Search_SortPanel />
-            <Search_Cards />
+            <Panel />
+            <SortPanel />
+            <Cards />
         </div>
     );
 };

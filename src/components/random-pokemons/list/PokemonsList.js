@@ -1,4 +1,4 @@
-import PokemonCard from "./pokemonCard/PokemonCard";
+import PokemonCard from "./card/PokemonCard";
 import { useSelector } from "react-redux";
 
 const PokemonsList = () => {
@@ -7,7 +7,7 @@ const PokemonsList = () => {
     const showPokeballs = useSelector(state => state.randomPokemonsSlice.closeFirstBtn);
 
     return (
-        <ul style={{ display: showPokeballs ? "grid" : "none" }} className='random-pokemons__right-cards'>
+        <ul style={{ display: showPokeballs ? "grid" : "none" }} className='pokemons-cards'>
             {pokemons.length > 0
                 ? pokemons.map((item, i) => {
                       return <PokemonCard key={i} item={item} i={i} active={activePokemon} />;

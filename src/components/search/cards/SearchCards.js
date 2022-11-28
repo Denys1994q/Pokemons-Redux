@@ -18,7 +18,7 @@ import { CSSTransition } from "react-transition-group";
 
 import BarChart from "../../common/charts/Doughnut";
 import SkeletonComponent from "../../common/skeleton/Skeleton";
-import ComparePokemons from "../search_Compare/ComparePokemons";
+import ComparePokemons from "../comparison/ComparePokemons";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const SearchCards = () => {

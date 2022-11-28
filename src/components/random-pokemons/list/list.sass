@@ -1,0 +1,37 @@
+.pokemons-cards
+    grid-template-rows: repeat(6, 1fr)
+    grid-template-columns: repeat(12, 1fr)
+    grid-gap: .5rem
+    @include respond(tab-land)
+        grid-template-columns: repeat(11, 1fr)
+    @include respond(tab-port)
+        grid-template-columns: repeat(9, 1fr)
+    @include respond(phoneL)
+        grid-template-columns: repeat(5, 1fr)
+    @include respond(phoneM)
+        grid-template-columns: repeat(3, 1fr)
+    &__item
+        height: 8rem
+        border: 1px solid #b6b4b4
+        // background: url('../src/imgs/backCard3.jpg')
+        background-size: cover
+        border-radius: 1rem
+        display: flex
+        justify-content: center
+        align-items: center
+        animation: leftToRight .4s ease-in-out
+        @include respond(phoneL)
+            height: 5rem
+        @include respond(phoneM)
+            height: 7rem
+        &-active
+            background: #ff622d
+        &:hover
+            transform: translateY(-5px)
+    &__info
+        width: 5rem
+        @include respond(phoneL)
+            width: 4rem
+    &__photo
+        animation: opacityAnim 1s ease
+        width: 100%

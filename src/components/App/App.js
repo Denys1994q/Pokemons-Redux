@@ -1,5 +1,5 @@
 import Search from "../search/Search";
-import RandomPokemons from "../random_Pokemons/randomPokemons";
+import RandomPokemons from "../random-pokemons/randomPokemons";
 
 function App() {
     return (
