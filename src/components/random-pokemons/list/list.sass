@@ -9,7 +9,7 @@
     @include respond(phoneL)
         grid-template-columns: repeat(5, 1fr)
     @include respond(phoneM)
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: repeat(4, 1fr)
     &__item
         height: 8rem
         border: 1px solid #b6b4b4
@@ -20,6 +20,7 @@
         justify-content: center
         align-items: center
         animation: leftToRight .4s ease-in-out
+        overflow: hidden
         @include respond(phoneL)
             height: 5rem
         @include respond(phoneM)
