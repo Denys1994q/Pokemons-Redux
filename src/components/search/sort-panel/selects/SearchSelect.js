@@ -1,7 +1,11 @@
 import Select from "react-select";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPokemons_filterPokemons, fetchPokemonTypes, searchPokemons_setActivePokemon } from "../../searchPokemonsSlice";
+import {
+    searchPokemons_filterPokemons,
+    fetchPokemonTypes,
+    searchPokemons_setActivePokemon,
+} from "../../searchPokemonsSlice";
 
 const SearchSelect = props => {
     const { type, setSelectedType } = props;
@@ -45,18 +49,14 @@ const SearchSelect = props => {
     };
 
     return (
-        <>
-            <div className='sorted-types-type'>
-                <Select
-                    classNamePrefix='custom-select'
-                    placeholder={type === "types" ? "type" : "abilities"}
-                    isClearable
-                    options={type === "types" ? optionsTypes : optionsAbilities}
-                    styles={colorStyles}
-                    onChange={choice => filter(choice)}
-                />
-            </div>
-        </>
+        <Select
+            classNamePrefix='custom-select'
+            placeholder={type === "types" ? "type" : "abilities"}
+            isClearable
+            options={type === "types" ? optionsTypes : optionsAbilities}
+            styles={colorStyles}
+            onChange={choice => filter(choice)}
+        />
     );
 };
 

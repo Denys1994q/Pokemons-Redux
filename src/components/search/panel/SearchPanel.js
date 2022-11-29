@@ -1,5 +1,5 @@
 import failure from "../../../imgs/sad.jpg";
-//
+
 import { useHttp } from "../../../hooks/http.hook";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState } from "react";
@@ -46,18 +46,19 @@ const SearchPanel = () => {
     };
 
     return (
-        <div className='main-search-input'>
-            <div className='main-search-input-wrapper'>
+        <div className='search-panel'>
+            <div className='search-panel__wrapper'>
                 <input
+                    className='search-panel__input'
                     value={searchTextFromInput}
                     onChange={e => searchPokemon(e)}
                     type='text'
                     placeholder='pokemon name or id'
                 />
-                {showError ? <p className='main-search-input-error'>Error</p> : null}
-                {showMarks ? <div className='compare__choose'>choose 2 pokemons</div> : null}
+                {showError ? <p className='search-panel__error'>Error</p> : null}
+                {showMarks ? <div className='search-panel__compare'>select 2 pokemons from a list</div> : null}
                 {loading ? (
-                    <div className='pakman'>
+                    <div className='search-panel__spinner'>
                         <PacmanLoader color={"#fd7d24"} loading={loading} size={15} />
                     </div>
                 ) : (
@@ -66,7 +67,7 @@ const SearchPanel = () => {
                     </button>
                 )}
                 {pokemonLoadingError ? (
-                    <div className='search-status'>
+                    <div className='search-panel__status'>
                         <img src={failure} alt='pokemon not found' />
                     </div>
                 ) : null}

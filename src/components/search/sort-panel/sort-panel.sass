@@ -1,4 +1,4 @@
-.opened-sort
+.sorted-panel
     background: #464646
     margin-top: -3rem
     margin-bottom: 2rem
@@ -11,7 +11,7 @@
     @include respond(tab-port)
         margin-top: 1rem
         margin-bottom: 0
-        padding: 2rem
+        padding: .3rem
         display: block
         text-align: center
     span
@@ -21,58 +21,54 @@
         margin-left: 1rem
         padding-left: .4rem
         cursor: pointer
-.sorted
-    display: flex
-    justify-content: start
-    align-items: center
-    gap: 3rem
-    font-size: 1.2rem
-    @include respond(tab-port)
-        flex-wrap: wrap
-        justify-content: center
-        gap: 1rem
-    @include respond(phoneM)
-        justify-content: start
-        gap: 3rem
-    &-wrapper
+    &__wrapper
         background: #464646
         margin-bottom: 2rem
         padding: 1rem 1rem
         animation: opacityAnim .5s ease-in-out
         @include respond(tab-port)
             padding: 1rem 0
-    li
+    &__list
+        display: flex
+        justify-content: start
+        align-items: center
+        gap: 3rem
+        font-size: 1.2rem
+        @include respond(tab-port)
+            flex-wrap: wrap
+            justify-content: center
+            gap: 1rem
+        @include respond(phoneM)
+            margin-left: 1rem
+            justify-content: start
+    &__listIcon
+        @include respond(phoneL)
+            display: none
+    &__list-item
         border-radius: 3px
-        max-width: 15rem
-        height: 3.7rem
         display: flex
         justify-content: center
         align-items: center
         text-align: center
         background: #ADDDD0
         cursor: pointer
-        padding: .5rem
+        padding: .5rem 1rem
+        &:hover
+            background: #518cbdf6
+    &__select
         text-transform: uppercase
         &:hover
-            background: orange
-    .sorted-types
-        background: none
-        border: none
-        text-align: start
-        width: 18rem
-        &:hover
             background: none
-            color: black
-        &-type
-            width: 30rem
+        @include respond(phoneL)
+            order: 3
 .custom-select
     &__control
+        min-height: auto !important
         background-color: #ADDDD0 !important
-        &:hover
-            background-color: orange !important
     &__placeholder
         color: black !important
     &__indicator
+        padding: .4rem !important
         color: black !important
     &__menu-list::-webkit-scrollbar
         width: 8px

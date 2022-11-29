@@ -1,63 +1,73 @@
-.main-search
+.search-panel
     display: flex
     flex-wrap: wrap
-    row-gap: 1rem
-    justify-content: flex-end
-    &-input
+    justify-content: center
+    gap: 2rem
+    position: relative
+    &__wrapper
+        position: relative
         display: flex
         flex-wrap: wrap
+        @include respond(phoneM)
+            width: 100%
+            text-align: center
+            margin-bottom: 2rem
+    &__input
+        border: none
+        padding: 1rem
+        font-size: 1.4rem
+        height: 5rem
+        width: 40rem
+        @include respond(phoneL)
+            max-width: 32rem
+        @include respond(phoneM)
+            margin-bottom: .2rem
+            width: 100%
+            max-width: none
+    &__compare
+        width: 100%
+        height: 5.2rem
+        border: 2px solid white
+        display: flex
         justify-content: center
-        gap: 2rem
-        position: relative
-        input
-            border: none
-            padding: 1rem
-            font-size: 1.4rem
-            height: 5rem
-            width: 40rem
-            @include respond(phoneL)
-                max-width: 32rem
-            @include respond(phoneM)
-                margin-bottom: .2rem
-                width: 100%
-                max-width: none
-        &-wrapper
-            position: relative
-            display: flex
-            flex-wrap: wrap
-            @include respond(phoneM)
-                width: 100%
-                text-align: center
-                margin-bottom: 2rem
-        &-error
-            position: absolute
-            bottom: 0
-            padding: .2rem 1rem
-            right: 0
-            background: red
-            color: white
-            font-size: 1.5rem
-            @include respond(tab-land)
-                padding: .2rem .5rem
-.search-status
-    position: absolute
-    top: 0
-    right: 15%
-    height: 5rem
-    width: 5rem
-    display: flex
-    align-items: center
-    justify-content: center
-    @include respond(phoneM)
-        right: 1%
-    img
-        width: 3rem
-        height: 3rem
-        object-fit: contain
-.pakman
-    width: 8rem
-    height: 5rem
-    padding: 1rem 0 0 1rem
-    margin-left: 1rem
-    @include respond(phoneM)
-        margin-left: 0
+        align-items: center
+        background: #df1e1e
+        color: white
+        position: absolute
+        bottom: 0
+        right: 0
+        padding: .5rem 1rem
+        font-size: 1.4rem
+        animation: opacityAnim .5s ease-in-out
+    &__status
+        position: absolute
+        top: 0
+        right: 15%
+        height: 5rem
+        width: 5rem
+        display: flex
+        align-items: center
+        justify-content: center
+        @include respond(phoneM)
+            right: 1%
+        img
+            width: 3rem
+            height: 3rem
+            object-fit: contain
+    &__error
+        position: absolute
+        bottom: 0
+        padding: .2rem 1rem
+        right: 0
+        background: red
+        color: white
+        font-size: 1.5rem
+        @include respond(tab-land)
+            padding: .2rem .5rem
+    &__spinner
+        width: 8rem
+        height: 5rem
+        padding: 1rem 0 0 1rem
+        margin-left: 1rem
+        @include respond(phoneM)
+            margin-left: 0
