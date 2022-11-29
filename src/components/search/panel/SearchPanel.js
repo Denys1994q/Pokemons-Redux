@@ -22,7 +22,6 @@ const SearchPanel = () => {
 
     const loading = useSelector(state => state.searchPokemonsSlice.searchedPokemonLoading);
     const pokemonLoadingError = useSelector(state => state.searchPokemonsSlice.searchedPokemonError);
-    // const searchedPokemon = useSelector(state => state.searchPokemonsSlice.searchedPokemon);
 
     const searchPokemon = e => {
         setSearchTextFromInput(e.target.value);
@@ -66,15 +65,15 @@ const SearchPanel = () => {
                         <i className='fa fa-search'></i>
                     </button>
                 )}
+                {pokemonLoadingError ? (
+                    <div className='search-status'>
+                        <img src={failure} alt='pokemon not found' />
+                    </div>
+                ) : null}
             </div>
             <button className='btn btn-compareBtn' onClick={() => comparePokemons()}>
                 Compare Pokemons
             </button>
-            {pokemonLoadingError ? (
-                <div className='search-status'>
-                    <img src={failure} alt='pokemon not found' />
-                </div>
-            ) : null}
         </div>
     );
 };

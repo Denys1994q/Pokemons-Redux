@@ -21,7 +21,8 @@
             margin-right: 1rem
         @include respond(phoneL)
             width: 100%
-            margin-right: 0
+            &:not(:last-child)
+                margin-right: 0
         &:hover
             box-shadow: inset 170px 0 0 0 #1a5b66
             color: #fff
@@ -35,7 +36,7 @@
         i
             color: white
         @include respond(phoneM)
-            width: 20%
+            margin-top: .5rem
             margin-left: 0
     &-showMore
         padding: 0 2rem
@@ -54,6 +55,7 @@
         @include respond(phoneL)
             width: 100%
             margin: 0
+            order: 2
         &:focus
             color: #fff
         &:before

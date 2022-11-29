@@ -23,10 +23,12 @@
                 max-width: none
         &-wrapper
             position: relative
+            display: flex
+            flex-wrap: wrap
             @include respond(phoneM)
                 width: 100%
                 text-align: center
-                margin-bottom: 5rem
+                margin-bottom: 2rem
         &-error
             position: absolute
             bottom: 0
@@ -38,14 +40,24 @@
             @include respond(tab-land)
                 padding: .2rem .5rem
 .search-status
-    position: static
+    position: absolute
+    top: 0
+    right: 15%
+    height: 5rem
+    width: 5rem
+    display: flex
+    align-items: center
+    justify-content: center
+    @include respond(phoneM)
+        right: 1%
     img
-        display: flex
-        align-items: center
-        justify-content: center
-        width: 3.5rem
-        height: 3.5rem
+        width: 3rem
+        height: 3rem
         object-fit: contain
-        margin-top: .7rem
 .pakman
-    margin-top: 1rem
+    width: 8rem
+    height: 5rem
+    padding: 1rem 0 0 1rem
+    margin-left: 1rem
+    @include respond(phoneM)
+        margin-left: 0
