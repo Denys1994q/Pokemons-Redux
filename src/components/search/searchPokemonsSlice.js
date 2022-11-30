@@ -15,7 +15,8 @@ const initialState = {
     pokemonAbilitiesLoading: false,
     pokemonAbilitiesError: false,
 
-    searchedPokemon: null,
+    // searchedPokemon: null,
+    resetPokemon: false,
     searchedPokemonLoading: false,
     searchedPokemonError: false,
 
@@ -24,6 +25,7 @@ const initialState = {
     pokemonTypesError: null,
 
     activePokemon: null,
+    activePokemonBody: null,
 };
 
 export const fetchPokemon = createAsyncThunk("searchPokemons/fetchPokemon", name => {
@@ -104,6 +106,9 @@ const searchPokemonsSlice = createSlice({
         searchPokemons_setActivePokemon: (state, action) => {
             state.activePokemon = action.payload;
         },
+        searchPokemons_resetPokemonFromSearch: state => {
+            state.activePokemonBody = null;
+        },
     },
     extraReducers: builder => {
         builder // пошук покемона по інпуту
@@ -112,7 +117,7 @@ const searchPokemonsSlice = createSlice({
                 state.searchedPokemonError = false;
             })
             .addCase(fetchPokemon.fulfilled, (state, action) => {
-                state.searchedPokemon = action.payload;
+                state.activePokemonBody = action.payload;
                 state.searchedPokemonLoading = false;
                 state.searchedPokemonError = false;
             })
@@ -165,4 +170,5 @@ export const {
     searchPokemons_filterPokemons,
     searchPokemons_sortPokemons,
     searchPokemons_setActivePokemon,
+    searchPokemons_resetPokemonFromSearch,
 } = actions;

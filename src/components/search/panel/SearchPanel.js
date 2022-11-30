@@ -33,7 +33,6 @@ const SearchPanel = () => {
     const findPokemon = () => {
         if (searchTextFromInput.length > 0) {
             dispatch(fetchPokemon(searchTextFromInput));
-            dispatch(searchPokemons_setActivePokemon(null));
             setShowError(false);
         } else {
             setShowError(true);
