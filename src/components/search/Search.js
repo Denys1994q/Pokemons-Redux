@@ -4,7 +4,7 @@ import Cards from "./cards/SearchCards";
 
 const Search = () => {
     return (
-        <div className='cards'>
+        <div className='cards-wrapper'>
             <Panel />
             <SortPanel />
             <Cards />

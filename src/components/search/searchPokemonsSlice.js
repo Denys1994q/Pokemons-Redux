@@ -4,8 +4,10 @@ import { useHttp } from "../../hooks/http.hook";
 
 const initialState = {
     openSortedBlock: false,
+
     addComparisonMark: false,
     pokemonsToCompare: [],
+
     pokemonsOrdered: [],
     pokemonsAfterFilter: [],
 
