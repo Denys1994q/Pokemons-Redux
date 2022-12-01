@@ -10,7 +10,6 @@ import {
     searchPokemons_deletePokemonsCompare,
     searchPokemons_resetPokemonFromSearch,
     fetchPokemonAbilities,
-    fetchPokemon,
 } from "../searchPokemonsSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBalanceScale, faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
@@ -29,19 +28,17 @@ const SearchCards = () => {
     // фільтруються (якщо нічого, записуються всі звичайні у відфільтровані)
     // сортуються відфільтровані
 
-    // покемон, по якому клікнули
+    // покемон: зі списку, по якому клікнули
     const activePokemon = useSelector(state => state.searchPokemonsSlice.activePokemon);
+    // покемон: з інпута
     const activePokemonBody = useSelector(state => state.searchPokemonsSlice.activePokemonBody);
-    // const resetPokemonFromSearch = useSelector(state => state.searchPokemonsSlice.resetPokemonFromSearch);
-    // навички покемона, по якому клікнули
+    // навички покемона
     const abilitiesDesc = useSelector(state => state.searchPokemonsSlice.pokemonAbilities);
     const pokemonAbilitiesLoading = useSelector(state => state.searchPokemonsSlice.pokemonAbilitiesLoading);
-    // список відфільтровані покемони за типом
+    // список покемонів, відфільтровані за типом
     const pokemonsAfterFilter = useSelector(state => state.searchPokemonsSlice.pokemonsAfterFilter);
-    // список відстортовані покемони за висотом, вагою чи досвідом
+    // список покемонів, відстортовані за висотом, вагою чи досвідом
     const pokemons = useSelector(state => state.searchPokemonsSlice.pokemonsOrdered);
-    // покемон з списку пошуку
-    const searchedPokemon = useSelector(state => state.searchPokemonsSlice.searchedPokemon);
     // список покемонів, які порівнюються
     const pokemonsToCompareArr = useSelector(state => state.searchPokemonsSlice.pokemonsToCompare);
     const showMarks = useSelector(state => state.searchPokemonsSlice.addComparisonMark);
@@ -134,24 +131,19 @@ const SearchCards = () => {
         marginRight: "45%",
     };
 
-    // треба щоб при пошуку не встановлювався активний покемон взагалі
     const showNext = () => {
         if (pokemonsAfterFilter.length - 1 > activePokemon) {
             dispatch(searchPokemons_setActivePokemon(activePokemon + 1));
-            // const nextPokemonName = pokemonsAfterFilter[activePokemon + 1].name;
-            // dispatch(fetchPokemon(nextPokemonName));
         }
     };
 
     const showPrev = () => {
         if (activePokemon != 0) {
             dispatch(searchPokemons_setActivePokemon(activePokemon - 1));
-            // const prevPokemonName = pokemonsAfterFilter[activePokemon - 1].name;
-            // dispatch(fetchPokemon(prevPokemonName));
         }
     };
 
-    // якщо покемона з пошуку, то він показується через запит до сервера. Якщо просто покемон зі списку вже завантажених, то запит не відбувається.
+    // якщо покемон з пошуку, то він показується через запит до сервера. Якщо покемон зі списку вже завантажених, то запит не відбувається.
     const content =
         activePokemon || activePokemon === 0 || activePokemonBody ? (
             <div className='active-card'>
@@ -172,7 +164,7 @@ const SearchCards = () => {
                                 size='2x'
                                 color='black'
                             />
-                        </div>{" "}
+                        </div>
                     </>
                 )}
                 <div className='active-card__top'>
@@ -290,145 +282,3 @@ const SearchCards = () => {
 };
 
 export default SearchCards;
-
-// const content =
-//         searchedPokemon && !activePokemon && activePokemon !== 0 ? (
-//             <div className='active-card'>
-//                 <div className='active-card__top'>
-//                     <div className='active-card__left'>
-//                         <p className='active-card__title'>{searchedPokemon.name}</p>
-//                         <p className='active-card__text'>Height: {searchedPokemon.height}</p>
-//                         <p className='active-card__text'>Weight: {searchedPokemon.weight}</p>
-//                         <p className='active-card__text'>Experience: {searchedPokemon.base_experience}</p>
-//                     </div>
-//                     <div className='active-card__right'>
-//                         <LazyLoadImage
-//                             effect='blur'
-//                             src={searchedPokemon.sprites.other.dream_world.front_default}
-//                             alt='pokemon-photo'
-//                         />
-//                     </div>
-//                 </div>
-//                 <div className='active-card__abilities'>
-//                     <div className='active-card__abilities-left'>
-//                         <p>Abilities:</p>
-//                     </div>
-//                     <div className='active-card__abilities-right'>
-//                         <ul>
-//                             {searchedPokemon.abilities.map((item, i) => {
-//                                 return (
-//                                     <li key={i} className='active-card__ability'>
-//                                         {item.ability.name} <span onClick={() => getInfoAboutAbilities(item)}>?</span>{" "}
-//                                     </li>
-//                                 );
-//                             })}
-//                         </ul>
-//                     </div>
-//                     <div
-//                         style={{ display: showAbilityInfo ? "flex" : "none" }}
-//                         className='cards-main-right-info-abilities-about'>
-//                         {pokemonAbilitiesLoading ? (
-//                             <div>
-//                                 <ClipLoader
-//                                     color={"#fd7d24"}
-//                                     loading={pokemonAbilitiesLoading}
-//                                     size={30}
-//                                     cssOverride={override}
-//                                 />
-//                             </div>
-//                         ) : abilitiesDesc.effect_entries ? (
-//                             abilitiesDesc.effect_entries[1].effect
-//                         ) : (
-//                             <div>Sorry, something goes wrong</div>
-//                         )}
-//                         <span onClick={() => setShowAbilityInfo(false)}>X</span>
-//                     </div>
-//                 </div>
-//                 {<BarChart stats={searchedPokemon.stats} />}
-//             </div>
-//         ) : (
-//             <>
-//                 {(pokemonsAfterFilter.length > 0 && activePokemon && pokemonsAfterFilter[activePokemon].name) ||
-//                 activePokemon === 0 ? (
-//                     <div className='active-card'>
-//                         <div className='active-card__arrow-left'>
-//                             <FontAwesomeIcon
-//                                 icon={faArrowAltCircleLeft}
-//                                 onClick={() => showPrev()}
-//                                 size='2x'
-//                                 color='black'
-//                             />
-//                         </div>
-//                         <div className='active-card__arrow-right'>
-//                             <FontAwesomeIcon
-//                                 icon={faArrowAltCircleRight}
-//                                 onClick={() => showNext()}
-//                                 size='2x'
-//                                 color='black'
-//                             />
-//                         </div>
-//                         <div className='active-card__top'>
-//                             <div className='active-card__left'>
-//                                 <p className='active-card__title'>{pokemonsAfterFilter[activePokemon].name}</p>
-//                                 <p className='active-card__text'>Height: {pokemonsAfterFilter[activePokemon].height}</p>
-//                                 <p className='active-card__text'>Weight: {pokemonsAfterFilter[activePokemon].weight}</p>
-//                                 <p className='active-card__text'>
-//                                     Experience: {pokemonsAfterFilter[activePokemon].base_experience}
-//                                 </p>
-//                             </div>
-//                             <CSSTransition in={animateFromList} timeout={500} classNames='scale-anim' unmountOnExit>
-//                                 <div className='active-card__right'>
-//                                     <LazyLoadImage
-//                                         effect='blur'
-//                                         src={pokemonsAfterFilter[activePokemon].sprites.other.dream_world.front_default}
-//                                     />
-//                                 </div>
-//                             </CSSTransition>
-//                         </div>
-//                         <div className='active-card__abilities'>
-//                             <div className='active-card__abilities-left'>
-//                                 <p>Abilities:</p>
-//                             </div>
-//                             <div className='active-card__abilities-right'>
-//                                 <ul>
-//                                     {pokemonsAfterFilter[activePokemon].abilities.map((item, i) => {
-//                                         return (
-//                                             <li key={i} className='active-card__ability'>
-//                                                 {item.ability.name}
-//                                                 <span onClick={() => getInfoAboutAbilities(item)}>?</span>
-//                                             </li>
-//                                         );
-//                                     })}
-//                                 </ul>
-//                             </div>
-//                             <div
-//                                 style={{
-//                                     display: showAbilityInfo ? "flex" : "none",
-//                                 }}
-//                                 className='active-card__abilities-about'>
-//                                 {pokemonAbilitiesLoading ? (
-//                                     <div>
-//                                         <ClipLoader
-//                                             color={"#fd7d24"}
-//                                             loading={pokemonAbilitiesLoading}
-//                                             size={30}
-//                                             cssOverride={override}
-//                                         />
-//                                     </div>
-//                                 ) : abilitiesDesc.effect_entries ? (
-//                                     abilitiesDesc.effect_entries[1].effect
-//                                 ) : (
-//                                     <div>Sorry, something goes wrong</div>
-//                                 )}
-//                                 <span onClick={() => setShowAbilityInfo(false)}>X</span>{" "}
-//                             </div>
-//                         </div>
-//                         {<BarChart stats={pokemonsAfterFilter[activePokemon].stats} />}
-//                     </div>
-//                 ) : (
-//                     <div className='emptyCard'>
-//                         <SkeletonComponent />
-//                     </div>
-//                 )}
-//             </>
-//         );

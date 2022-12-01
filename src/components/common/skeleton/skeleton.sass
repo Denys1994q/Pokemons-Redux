@@ -1,20 +1,28 @@
-.skeleton-wrapper
+.skeleton__wrapper
     display: flex
     justify-content: space-between
+    gap: 1rem
     align-items: center
     @include respond(phoneL)
         justify-content: space-evenly
-.skeleton-left
-    padding-top: 4rem
-    margin-bottom: 4rem
-    @include respond(phoneL)
-        margin-bottom: 1rem
-        padding-top: 2rem
+.skeleton__left
+    padding-top: 2rem
+    margin-bottom: 1rem
+    & span
+        @include respond(phoneM)
+            width: 15rem !important
     &-top
-        margin-bottom: 4rem
-        @include respond(phoneL)
-            margin-bottom: 1rem
-.skeleton-middle
+        margin-bottom: 2rem
+        & span
+            @include respond(phoneM)
+                width: 12rem !important
+.skeleton__circle span
+    @include respond(phoneM)
+        width: 12rem !important
+        height: 12rem !important
+.skeleton__middle
+    margin-top: 2rem
     margin-bottom: 2rem
     @include respond(phoneL)
         margin-bottom: 1rem
+        margin-top: 0

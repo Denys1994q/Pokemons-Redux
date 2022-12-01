@@ -3,28 +3,31 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "../../hooks/http.hook";
 
 const initialState = {
+    // стилі: сортування
     openSortedBlock: false,
-
+    // стилі: порівняння
     addComparisonMark: false,
+    // список: покемони для порівняння
     pokemonsToCompare: [],
-
+    // список: відсортовані покемони
     pokemonsOrdered: [],
+    // cписок: фідфільтровані покемони
     pokemonsAfterFilter: [],
-
+    // навички покемона
     pokemonAbilities: {},
     pokemonAbilitiesLoading: false,
     pokemonAbilitiesError: false,
-
-    // searchedPokemon: null,
+    // покемон з інпута для пошуку
     resetPokemon: false,
     searchedPokemonLoading: false,
     searchedPokemonError: false,
-
+    // типи покемонів для селекта
     pokemonTypes: [],
     pokemonTypesLoading: null,
     pokemonTypesError: null,
-
+    // покемон зі списку завантажених
     activePokemon: null,
+    // покемон з інпута для пошуку
     activePokemonBody: null,
 };
 

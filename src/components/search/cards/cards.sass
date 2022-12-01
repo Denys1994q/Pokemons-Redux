@@ -8,7 +8,7 @@
     @include respond(tab-land)
         justify-content: center
     &__left
-        width: 68%
+        width: 71%
         @include respond(tab-land)
             width: 100%
             order: 2
@@ -26,23 +26,25 @@
         @include respond(phoneM)
             grid-template-columns: repeat(1, 1fr)
     &__right
-        width: 30%
+        width: 27%
         border-radius: 1rem
         background: url('../../../imgs/backNew1.webp')
         background-size: contain
-        max-height: 50rem
+        height: max-content
         padding: .5rem
         position: relative
         color: #fff
         overflow: hidden
+        // flex-grow: 1
         @include respond(tab-land)
+            // flex-grow: 0
             width: auto
+            margin-top: 2rem
             margin-bottom: 2rem
             order: 1
-        @include respond(tab-port)
-            margin-top: 2rem
-            max-height: none
         @include respond(phoneL)
+            max-height: none
+        @include respond(phoneM)
             width: 100%
 // активна картка 
 .active-card
@@ -54,81 +56,86 @@
         top: 0
         left: 0
         cursor: pointer
+        @include respond(phoneL)
+            right: 17%
+            left: auto
     &__arrow-right
         position: absolute
         top: 0
         left: 4rem
         cursor: pointer
+        @include respond(phoneL)
+            right: 2%
+            left: auto
     &__top
         display: flex
-        flex-wrap: wrap
+        justify-content: space-around
         margin-bottom: 1rem
     &__left
         width: 50%
-        @include respond(tab-port)
+        @include respond(phoneL)
             width: 100%
             margin-bottom: 1rem
     &__right
-        width: 50%
+        width: 17rem
+        height: 20rem
         display: flex
         justify-content: center
         align-items: center
         text-align: center
-        @include respond(tab-port)
-            width: 100%
+        // @include respond(phoneL)
+        //     width: 100%
         img
-            width: 100%
-            @include respond(tab-port)
-                width: 70%
-        span
-            @include respond(phoneL)
-                width: 65%
+            width: 17rem
+            height: 20rem
+            object-fit: contain
+            @include respond(tab-land)
+                width: 16rem
+            @include respond(phoneM)
+                width: 13rem
     &__title
         text-transform: uppercase
         width: 15rem
         text-align: center
         background: #E94560
-        margin-left: 2rem
         margin-top: 5rem
         margin-bottom: 3rem
         font-weight: bold
-        @include respond(tab-port)
-            margin: 1rem 0rem
-            padding: .5rem
-            width: 100%
-            font-size: 3rem
+        // @include respond(phoneL)
+        //     margin: 1rem 0rem
+        //     padding: .5rem
+        //     width: 100%
+        //     font-size: 2.6rem
     &__text
         font-size: 1.4rem
         width: 17rem
         padding-left: 1rem
         background: #E94560
-        @include respond(tab-port)
+        @include respond(phoneL)
             margin: 0
             padding: .5rem
             text-align: center
-            width: 100%
+            width: 90%
     &__abilities
         background: #E94560
         font-size: 1.4rem
         display: flex
         align-items: center
-        justify-content: center
         padding: .1rem
         position: relative
         &-left
-            width: 45%
+            width: 44%
             display: flex
             align-items: center
             justify-content: center
         &-right
             padding: 1rem
-            width: 45%
-            display: flex
-            align-items: center
-            justify-content: center
+            width: 55%
             ul
                 li
                     margin-bottom: .3rem
+                    span
+                        margin-left: .5rem
         &-about
             position: absolute
             top: 0
@@ -216,11 +223,7 @@
             padding: .2rem .5rem
 
 .emptyCard
-    width: 100%
-    height: 40rem
     padding: .5rem
-    justify-content: center
-    align-items: center
     @include respond(tab-land)
         height: auto
     @include respond(phoneL)
@@ -260,7 +263,3 @@
     background: #f7de3f
 .fairy
     background: #fdb9e9
-
-@media (max-width: 1250px)
-    .skeleton-left
-        margin-right: 2rem

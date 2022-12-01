@@ -1,19 +1,12 @@
 import failure from "../../../imgs/sad.jpg";
 
-import { useHttp } from "../../../hooks/http.hook";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    searchPokemons_setActivePokemon,
-    searchPokemons_addComparisonMark,
-    fetchPokemon,
-} from "../searchPokemonsSlice";
+import { searchPokemons_addComparisonMark, fetchPokemon } from "../searchPokemonsSlice";
 
 const SearchPanel = () => {
     const dispatch = useDispatch();
-
-    const { request } = useHttp();
 
     const showMarks = useSelector(state => state.searchPokemonsSlice.addComparisonMark);
 
