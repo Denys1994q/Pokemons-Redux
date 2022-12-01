@@ -93,6 +93,7 @@ const SearchCards = () => {
                                 onClick={() => addPokemonsToCompare(i)}
                                 icon={faBalanceScale}
                                 size='lg'
+                                beat  
                                 inverse
                             />
                         </p>
